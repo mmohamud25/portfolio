@@ -369,8 +369,9 @@ a { color: inherit; text-decoration: none; }
   .portrait { max-width: 240px; }
 }
   </style>
+<script>window.BLOG_CFG = { url: "https://lurrqcyaybpgidzjfdvh.supabase.co", key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx1cnJxY3lheWJwZ2lkempmZHZoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA2ODQwNjgsImV4cCI6MjEwNjI2MDA2OH0.lOou18b7XYOLXcgJ-RABsDegpOCiO9pu_-bdWJdUX2M" };</script>
+  <script defer src="https://admin.mmohamud.me/t.js"></script>
 </head>
-<script defer src="https://admin.mmohamud.me/t.js"></script>
 <body>
 
 <div id="pbar"></div>
@@ -916,8 +917,6 @@ a { color: inherit; text-decoration: none; }
       </div>
     </div>
 
-    </div>
-
     <div class="project" style="margin-bottom:20px;">
       <div>
         <span class="mono-label mono-label--accent">Cybersecurity · Certification Hub</span>
@@ -1078,8 +1077,6 @@ a { color: inherit; text-decoration: none; }
       </div>
     </div>
 
-    </div>
-
   </div>
 </section>
 
@@ -1118,17 +1115,6 @@ a { color: inherit; text-decoration: none; }
   </div>
 </section>
 
-<!-- Blog Modal -->
-<div class="modal-bg" id="blogModal" onclick="closeBlogModal(event)">
-  <div class="modal-box">
-    <button class="modal-close" onclick="document.getElementById('blogModal').classList.remove('open')">x</button>
-    <div class="modal-cat" id="mCat"></div>
-    <div class="modal-title" id="mTitle"></div>
-    <div class="modal-meta" id="mMeta"></div>
-    <div class="modal-body" id="mBody"></div>
-  </div>
-</div>
-
 <!-- 08 CONTACT -->
 <div class="contact" id="contact">
   <div class="grid-bg" style="position:absolute;inset:0;pointer-events:none;z-index:0;"></div>
@@ -1161,10 +1147,6 @@ a { color: inherit; text-decoration: none; }
   <span>&copy; 2026 Mohamed Mohamud</span>
   <span>Security+ · DoD 8570 IAT II</span>
 </footer>
-<div style="text-align:center;padding:4px 0 8px;">
-  <a href="admin.html" style="color:transparent;font-size:1px;user-select:none;" tabindex="-1" aria-hidden="true">.</a>
-</div>
-
 <button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top">&#8593;</button>
 
 <script>
@@ -1273,67 +1255,66 @@ function fmtDate(d) {
 }
 function readTime(txt) { return Math.max(1, Math.round(((txt || '').split(/\s+/).length) / 200)) + ' min'; }
 
-function openPost(d) {
-  try { var p = JSON.parse(decodeURIComponent(d)); } catch(e) { return; }
-  document.getElementById('mCat').textContent = p.category || 'Writing';
-  document.getElementById('mTitle').textContent = p.title || '';
-  document.getElementById('mMeta').textContent = fmtDate(p.created_at) + ' - ' + readTime(p.content);
-  document.getElementById('mBody').innerHTML = (p.content || '').replace(/\n/g, '<br>');
-  document.getElementById('blogModal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeBlogModal(e) {
-  if (e && e.target !== document.getElementById('blogModal')) return;
-  document.getElementById('blogModal').classList.remove('open');
-  document.body.style.overflow = '';
-}
 
 async function loadBlog() {
   var el = document.getElementById('blogList');
   var section = document.getElementById('writing');
   var navLink = document.querySelector('a[href="#writing"]');
+  function hide() { if (section) section.style.display = 'none'; if (navLink) navLink.style.display = 'none'; }
   try {
-    var res = await fetch(SUPA_URL + '/rest/v1/posts?select=*&status=eq.published&order=created_at.desc&limit=8', {
-      headers: { 'apikey': SUPA_KEY, 'Authorization': 'Bearer ' + SUPA_KEY }
+    var res = await fetch('https://blog.mmohamud.me/feed.json', { cache: 'no-store' });
+    if (!res.ok) return hide();
+    var posts = (await res.json()).slice(0, 6);
+    if (!posts.length) return hide();
+    el.textContent = '';
+    posts.forEach(function (p) {
+      var row = document.createElement('a');
+      row.className = 'post-row';
+      row.href = p.url;
+      var date = document.createElement('div'); date.className = 'post-row__date'; date.textContent = fmtDate(p.date);
+      var cat = document.createElement('div'); var chip = document.createElement('span');
+      chip.className = 'chip'; chip.textContent = p.topic || 'Blog'; cat.appendChild(chip);
+      var title = document.createElement('div'); title.className = 'post-row__title'; title.textContent = p.title;
+      var meta = document.createElement('div'); meta.className = 'post-row__meta'; meta.textContent = p.mins + ' min read';
+      row.append(date, cat, title, meta);
+      el.appendChild(row);
     });
-    var posts = await res.json();
-    if (!Array.isArray(posts) || !posts.length) {
-      if (section) section.style.display = 'none';
-      if (navLink) navLink.style.display = 'none';
-      return;
-    }
-    el.innerHTML = posts.map(function(p) {
-      var enc = encodeURIComponent(JSON.stringify(p)).replace(/'/g, '%27');
-      return '<div class="post-row" onclick=\'openPost("' + enc + '")\'>' +
-        '<div class="post-row__date">' + fmtDate(p.created_at) + '</div>' +
-        '<div><span class="chip">' + (p.category || 'Blog') + '</span></div>' +
-        '<div class="post-row__title">' + (p.title || '') + '</div>' +
-        '<div class="post-row__meta">' + readTime(p.content) + ' read</div>' +
-        '</div>';
-    }).join('') + '<div style="height:1px;background:var(--line);margin-top:0;"></div>';
-  } catch (err) {
-    if (section) section.style.display = 'none';
-    if (navLink) navLink.style.display = 'none';
-  }
+    var all = document.createElement('a');
+    all.href = 'https://blog.mmohamud.me';
+    all.className = 'project__cta';
+    all.style.display = 'inline-flex';
+    all.style.marginTop = '24px';
+    all.textContent = 'All writing \u2192';
+    el.appendChild(all);
+  } catch (err) { hide(); }
 }
 loadBlog();
 
 /* Contact form */
-document.getElementById('cForm').addEventListener('submit', async function(e) {
+document.getElementById('cForm').addEventListener('submit', async function (e) {
   e.preventDefault();
-  var btn = document.getElementById('submitBtn');
-  var orig = btn.textContent;
-  btn.textContent = 'Sending...'; btn.style.opacity = '0.7';
+  var form = this, btn = document.getElementById('submitBtn'), orig = btn.textContent;
+  var f = form.elements;
+  var name = f.name.value.trim(), email = f.email.value.trim(), message = f.message.value.trim();
+  if (!name || !email || !message) { btn.textContent = 'Please fill in every field'; setTimeout(function () { btn.textContent = orig; }, 2500); return; }
+  btn.textContent = 'Sending...'; btn.style.opacity = '0.7'; btn.disabled = true;
+  var cfg = window.BLOG_CFG || {}, saved = false, mailed = false;
   try {
-    var r = await fetch(this.action, { method: 'POST', body: new FormData(this), headers: { 'Accept': 'application/json' } });
-    if (r.ok) {
-      this.reset();
-      document.getElementById('formOk').style.display = 'block';
-      btn.textContent = 'Sent';
-    } else { btn.textContent = 'Try Again'; }
-  } catch(err) { btn.textContent = 'Try Again'; }
-  btn.style.opacity = '1';
-  setTimeout(function() { btn.textContent = orig; }, 4000);
+    var r = await fetch(cfg.url + '/rest/v1/messages', {
+      method: 'POST',
+      headers: { apikey: cfg.key, Authorization: 'Bearer ' + cfg.key, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+      body: JSON.stringify({ source: 'contact', name: name.slice(0, 120), email: email, body: message.slice(0, 5000), site: 'mmohamud.me' })
+    });
+    saved = r.ok;
+  } catch (err) {}
+  try {
+    var m = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+    mailed = m.ok;
+  } catch (err) {}
+  if (saved || mailed) { form.reset(); document.getElementById('formOk').style.display = 'block'; btn.textContent = 'Sent'; }
+  else { btn.textContent = 'Try Again'; }
+  btn.style.opacity = '1'; btn.disabled = false;
+  setTimeout(function () { btn.textContent = orig; }, 4000);
 });
 </script>
 
