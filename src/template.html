@@ -377,6 +377,58 @@ a { color: inherit; text-decoration: none; }
   .hero__grid { grid-template-columns: 1fr; gap: 36px; }
   .portrait { max-width: 240px; }
 }
+
+/* ============================================================
+   Left section menu (wide screens) + phone menu
+   ============================================================ */
+.rail { display: none; }
+.nav__burger { display: none; }
+@media (min-width: 1200px) {
+  .nav__links { display: none; }
+  .rail { position: fixed; left: 40px; top: 50%; transform: translateY(-50%); z-index: 40;
+    display: flex; flex-direction: column; gap: 4px; }
+  .rail a { display: flex; align-items: center; gap: 10px; padding: 7px 0;
+    font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--ink-dim); transition: color 0.2s; }
+  .rail__num { width: 18px; transition: color 0.2s; }
+  .rail__line { width: 14px; height: 1px; background: var(--line-strong); transition: width 0.3s ease, background 0.3s; }
+  .rail__label { opacity: 0; transform: translateX(-6px); transition: opacity 0.25s, transform 0.25s; white-space: nowrap; }
+  .rail:hover .rail__label, .rail a:focus-visible .rail__label { opacity: 0.75; transform: none; }
+  .rail a:hover, .rail a:focus-visible { color: var(--ink); }
+  .rail a:hover .rail__line { width: 24px; background: var(--ink-mid); }
+  .rail a[aria-current="true"] { color: var(--ink); }
+  .rail a[aria-current="true"] .rail__num { color: var(--accent); }
+  .rail a[aria-current="true"] .rail__line { width: 36px; background: var(--accent); }
+  .rail a[aria-current="true"] .rail__label { opacity: 1; transform: none; }
+  .rail a:focus-visible { outline: 1px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+  /* make room so the menu never covers the page */
+  .hero, .stats, .section, .contact, .footer { padding-left: 220px; }
+}
+@media (max-width: 900px) {
+  .nav__burger { display: inline-flex; flex-direction: column; justify-content: center; gap: 5px;
+    width: 40px; height: 40px; padding: 0 10px; border: 1px solid var(--line-strong); border-radius: 10px;
+    background: none; cursor: pointer; }
+  .nav__burger span { display: block; height: 1.5px; background: var(--ink); border-radius: 2px; transition: transform 0.25s, opacity 0.2s; }
+  .nav.menu-open .nav__burger span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav.menu-open .nav__burger span:nth-child(2) { opacity: 0; }
+  .nav.menu-open .nav__burger span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+  .nav.menu-open .nav__links { display: flex; position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; gap: 0; padding: 8px var(--sp-6) 16px; background: var(--bg);
+    border-bottom: 1px solid var(--line-strong); box-shadow: 0 24px 48px rgba(0,0,0,0.6); }
+  /* the top bar's blur shows the page through the open menu, so make the bar solid while it's open */
+  .nav.menu-open { background: var(--bg); backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .nav.menu-open .nav__links a { padding: 14px 0; font-size: 15px; border-bottom: 1px solid var(--line); }
+  .nav.menu-open .nav__links a:last-child { border-bottom: 0; }
+  .nav.menu-open .nav__links a.active { color: var(--accent); }
+}
+@media (max-width: 480px) {
+  .nav__right { gap: 8px; }
+  .status-pill span { display: none; }
+  .status-pill { padding: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rail__line, .rail__label, .nav__burger span { transition: none; }
+}
   </style>
 <script>window.BLOG_CFG = { url: "https://lurrqcyaybpgidzjfdvh.supabase.co", key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx1cnJxY3lheWJwZ2lkempmZHZoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA2ODQwNjgsImV4cCI6MjEwNjI2MDA2OH0.lOou18b7XYOLXcgJ-RABsDegpOCiO9pu_-bdWJdUX2M" };</script>
   <script defer src="https://admin.mmohamud.me/t.js"></script>
@@ -388,7 +440,7 @@ a { color: inherit; text-decoration: none; }
 <!-- NAV -->
 <nav class="nav">
   <div class="nav__logo">MM</div>
-  <div class="nav__links">
+  <div class="nav__links" id="navLinks">
     <a href="#about">About</a>
     <a href="#experience">Experience</a>
     <a href="#skills">Skills</a>
@@ -403,7 +455,21 @@ a { color: inherit; text-decoration: none; }
       <div class="status-pill__dot"></div>
       <span id="statusText">{{status}}</span>
     </div>
+    <button class="nav__burger" id="navBurger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
   </div>
+</nav>
+
+<!-- Left section menu (wide screens): the current section expands as you scroll -->
+<nav class="rail" id="rail" aria-label="Sections">
+  <a href="#about" data-sec="about"><span class="rail__num">01</span><span class="rail__line" aria-hidden="true"></span><span class="rail__label">About</span></a>
+  <a href="#experience" data-sec="experience"><span class="rail__num">02</span><span class="rail__line" aria-hidden="true"></span><span class="rail__label">Experience</span></a>
+  <a href="#skills" data-sec="skills"><span class="rail__num">03</span><span class="rail__line" aria-hidden="true"></span><span class="rail__label">Skills</span></a>
+  <a href="#work" data-sec="work"><span class="rail__num">04</span><span class="rail__line" aria-hidden="true"></span><span class="rail__label">Work</span></a>
+  <a href="#now" data-sec="now"><span class="rail__num">05</span><span class="rail__line" aria-hidden="true"></span><span class="rail__label">/now</span></a>
+  <a href="#writing" data-sec="writing"><span class="rail__num">06</span><span class="rail__line" aria-hidden="true"></span><span class="rail__label">Writing</span></a>
+  <a href="#contact" data-sec="contact"><span class="rail__num">07</span><span class="rail__line" aria-hidden="true"></span><span class="rail__label">Contact</span></a>
 </nav>
 
 {{hero}}
@@ -480,18 +546,48 @@ function toggleLang() {
   applyLang();
 }
 
-/* Scroll effects */
-window.addEventListener('scroll', function() {
+/* Scroll effects: progress bar, back-to-top, and which section you're in (top menu, left menu, phone menu) */
+var SECTION_IDS = ['about', 'experience', 'skills', 'work', 'now', 'writing', 'contact'];
+function currentSection() {
+  var line = window.innerHeight * 0.35, cur = null;
+  SECTION_IDS.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el && el.offsetParent !== null && el.getBoundingClientRect().top <= line) cur = id;
+  });
+  if (cur && window.innerHeight + window.scrollY >= document.body.scrollHeight - 4) cur = 'contact';
+  return cur;
+}
+var ticking = false;
+function onScroll() {
+  ticking = false;
   var s = window.scrollY;
   var total = document.body.scrollHeight - window.innerHeight;
   document.getElementById('pbar').style.width = (total > 0 ? (s / total) * 100 : 0) + '%';
   document.getElementById('btt').classList.toggle('show', s > 500);
-  document.querySelectorAll('section[id], div[id="contact"]').forEach(function(sec) {
-    var top = sec.offsetTop - 100;
-    var link = document.querySelector('.nav__links a[href="#' + sec.id + '"]');
-    if (link) link.classList.toggle('active', s >= top && s < top + sec.offsetHeight);
+  var cur = currentSection();
+  document.querySelectorAll('.nav__links a').forEach(function(a) { a.classList.toggle('active', a.getAttribute('href') === '#' + cur); });
+  document.querySelectorAll('.rail a').forEach(function(a) {
+    if (a.dataset.sec === cur) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
   });
-});
+}
+window.addEventListener('scroll', function() { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+window.addEventListener('resize', onScroll);
+onScroll();
+
+/* Phone menu */
+(function() {
+  var nav = document.querySelector('.nav'), btn = document.getElementById('navBurger');
+  function setOpen(open) {
+    nav.classList.toggle('menu-open', open);
+    btn.setAttribute('aria-expanded', String(open));
+    btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+  btn.addEventListener('click', function() { setOpen(!nav.classList.contains('menu-open')); });
+  document.getElementById('navLinks').addEventListener('click', function(e) { if (e.target.closest('a')) setOpen(false); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && nav.classList.contains('menu-open')) { setOpen(false); btn.focus(); } });
+  document.addEventListener('click', function(e) { if (nav.classList.contains('menu-open') && !nav.contains(e.target)) setOpen(false); });
+  window.addEventListener('resize', function() { if (window.innerWidth > 900) setOpen(false); });
+})();
 
 /* Fade up */
 var io = new IntersectionObserver(function(entries) {
@@ -510,8 +606,7 @@ function readTime(txt) { return Math.max(1, Math.round(((txt || '').split(/\s+/)
 async function loadBlog() {
   var el = document.getElementById('blogList');
   var section = document.getElementById('writing');
-  var navLink = document.querySelector('a[href="#writing"]');
-  function hide() { if (section) section.style.display = 'none'; if (navLink) navLink.style.display = 'none'; }
+  function hide() { if (section) section.style.display = 'none'; document.querySelectorAll('a[href="#writing"]').forEach(function(a) { a.style.display = 'none'; }); }
   try {
     var res = await fetch('https://blog.mmohamud.me/feed.json', { cache: 'no-store' });
     if (!res.ok) return hide();
