@@ -110,7 +110,7 @@ ${e.items.map((x, i) => `    <div class="timeline__row">
         <div class="timeline__role">${esc(x.role)}</div>
         <div class="timeline__org">${esc(x.org)}</div>
         <div class="tl-chips">
-${x.chips.map((c) => `          ${chip(c)}`).join("\n")}
+${(x.chips || []).map((c) => `          ${chip(c)}`).join("\n")}
         </div>
       </div>
       <div>
@@ -126,7 +126,7 @@ function skills(s, certs, edu) {
         <div class="cert-dot ${c.earned ? "on" : "off"}"></div>
         <div>
           <div class="cert-name">${esc(c.name)}</div>
-          <div class="cert-meta">${esc(c.meta)}${c.link ? ` &nbsp;·&nbsp; <a href="${attr(safeUrl(c.link.url))}" target="_blank" style="color:var(--accent);">${esc(c.link.text)}</a>` : ""}</div>
+          <div class="cert-meta">${esc(c.meta)}${c.link?.url && c.link?.text ? ` &nbsp;·&nbsp; <a href="${attr(safeUrl(c.link.url))}" target="_blank" style="color:var(--accent);">${esc(c.link.text)}</a>` : ""}</div>
           <div class="cert-badge ${c.earned ? "on" : "off"}">${esc(c.badge || (c.earned ? "Certified" : "In Progress"))}</div>
         </div>
       </div>`).join("\n");
@@ -140,7 +140,7 @@ ${head("03 / SKILLS", "skillsTitle", tr("skillsTitle", s.title))}
 ${s.groups.map((g) => `    <div class="skill-group">
       <h4>${esc(g.name)}</h4>
       <div class="chips-wrap">
-${g.chips.map((c) => `        ${chip(c, "chip chip--solid")}`).join("\n")}
+${(g.chips || []).map((c) => `        ${chip(c, "chip chip--solid")}`).join("\n")}
       </div>
     </div>`).join("\n")}
 
@@ -181,13 +181,13 @@ ${w.projects.map((p) => `    <div class="project${p.featured ? " project--featur
         <h3 class="project__title" style="margin-top:10px;">${esc(p.title)}</h3>
         <p class="project__blurb">${esc(p.blurb)}</p>
         <div class="proj-stack">
-${p.chips.map((c) => `          ${chip(c)}`).join("\n")}
+${(p.chips || []).map((c) => `          ${chip(c)}`).join("\n")}
         </div>${p.metrics?.length ? `
         <div class="proj-metrics">
 ${p.metrics.map((m) => `          <div><div class="project__metric-value">${esc(m.value)}</div><div class="project__metric-label">${esc(m.label)}</div></div>`).join("\n")}
         </div>` : ""}
         <div style="display:flex;gap:20px;margin-top:18px;align-items:center;flex-wrap:wrap;">
-${p.links.map((l) => `          <a href="${attr(safeUrl(l.url))}" target="_blank" class="project__cta"${l.muted ? ' style="color:var(--ink-dim);"' : ""}>${esc(l.text)} &#8594;</a>`).join("\n")}
+${(p.links || []).map((l) => `          <a href="${attr(safeUrl(l.url))}" target="_blank" class="project__cta"${l.muted ? ' style="color:var(--ink-dim);"' : ""}>${esc(l.text)} &#8594;</a>`).join("\n")}
         </div>
       </div>
       <div class="project__visual">
@@ -251,6 +251,11 @@ async function loadContent() {
 
 // ---------- build ----------
 const C = await loadContent();
+for (const [path, fallback] of [["hero.chips", []], ["stats", []], ["about.paragraphs", []], ["experience.items", []], ["skills.groups", []], ["certifications", []], ["education", []], ["work.projects", []], ["now.items", []], ["contact.socials", []]]) {
+  const ks = path.split("."); let o = C;
+  for (const k of ks.slice(0, -1)) o = o[k] ??= {};
+  if (!Array.isArray(o[ks.at(-1)])) o[ks.at(-1)] = fallback;
+}
 const visuals = {};
 if (existsSync("src/visuals")) for (const f of await readdir("src/visuals")) if (f.endsWith(".svg")) visuals[f.replace(/\.svg$/, "")] = await readFile(join("src/visuals", f), "utf8");
 
