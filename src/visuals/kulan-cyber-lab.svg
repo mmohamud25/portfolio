@@ -1,0 +1,36 @@
+<svg style="width:100%;height:100%;border-radius:inherit;" viewbox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#050505" height="280" width="400"></rect>
+<rect fill="#111111" height="32" width="400" x="0" y="0"></rect>
+<circle cx="14" cy="16" fill="#ff5f57" r="5"></circle><circle cx="28" cy="16" fill="#febc2e" r="5"></circle><circle cx="42" cy="16" fill="#28c840" r="5"></circle>
+<text fill="#737373" font-family="monospace" font-size="9" x="60" y="21">Kulan Cyber Lab · CTF Terminal</text>
+<rect fill="rgba(255,95,87,0.15)" height="14" rx="3" stroke="#ff5f57" stroke-width="0.8" width="44" x="344" y="9"></rect>
+<text fill="#ff5f57" font-family="monospace" font-size="7" x="350" y="19">CTF LIVE</text>
+<!-- terminal body -->
+<rect fill="#070707" height="248" width="400" x="0" y="32"></rect>
+<!-- timer bar -->
+<rect fill="#111111" height="20" rx="3" width="380" x="10" y="40"></rect>
+<text fill="#737373" font-family="monospace" font-size="8" x="20" y="54">CHALLENGE: SQL Injection · HARD · Timer: </text>
+<text fill="#ff5f57" font-family="monospace" font-size="8" x="266" y="54">14:32</text>
+<text fill="#737373" font-family="monospace" font-size="8" x="300" y="54"> · Points: </text>
+<text fill="#c8f76b" font-family="monospace" font-size="8" x="350" y="54">500</text>
+<!-- terminal lines -->
+<text fill="#737373" font-family="monospace" font-size="8" x="14" y="80">$ curl -X POST https://target.lab/login \</text>
+<text fill="#737373" font-family="monospace" font-size="8" x="14" y="94">       -d "username=' OR 1=1--&amp;password=x"</text>
+<text fill="#28c840" font-family="monospace" font-size="8" x="14" y="112">HTTP/1.1 200 OK</text>
+<text fill="#a3a3a3" font-family="monospace" font-size="8" x="14" y="126">{"status":"success","token":"eyJhbGciOiJIUzI1NiJ9...</text>
+<text fill="#a3a3a3" font-family="monospace" font-size="8" x="14" y="140"> "user":"admin","flag":"CTF{sql_bypass_0x1A}"}</text>
+<text fill="#737373" font-family="monospace" font-size="8" x="14" y="158">$ submit_flag CTF{sql_bypass_0x1A}</text>
+<!-- flag explosion -->
+<rect fill="rgba(200,247,107,0.08)" height="30" rx="4" stroke="#c8f76b" stroke-width="0.8" width="380" x="10" y="165"></rect>
+<text fill="#c8f76b" font-family="monospace" font-size="8" x="20" y="177">🚩 FLAG CAPTURED! +500 pts · Vulnerability: OWASP A03</text>
+<text fill="#737373" font-family="monospace" font-size="7" x="20" y="189">Explanation: Boolean-based blind SQLi bypassed login. Mitigation: parameterized queries.</text>
+<!-- AI hint block -->
+<rect fill="#101010" height="48" rx="4" stroke="rgba(200,247,107,0.12)" width="380" x="10" y="202"></rect>
+<text fill="#c8f76b" font-family="monospace" font-size="7" x="20" y="216">// Claude AI Analysis</text>
+<text fill="#a3a3a3" font-family="monospace" font-size="7" x="20" y="228">The payload ' OR 1=1-- terminates the string and injects a tautology.</text>
+<text fill="#a3a3a3" font-family="monospace" font-size="7" x="20" y="240">Always use prepared statements: $stmt = $pdo-&gt;prepare("SELECT * FROM users</text>
+<text fill="#a3a3a3" font-family="monospace" font-size="7" x="20" y="252">WHERE username = ? AND password = ?"); $stmt-&gt;execute([$u, $p]);</text>
+<!-- cursor -->
+<text fill="#c8f76b" font-family="monospace" font-size="8" x="14" y="268">$ <rect fill="#c8f76b" height="12" opacity="0.8" width="7" x="26" y="258"></rect></text>
+<rect fill="#c8f76b" height="12" opacity="0.7" width="7" x="26" y="258"></rect>
+</svg>

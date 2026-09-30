@@ -1,0 +1,54 @@
+<svg style="width:100%;height:100%;border-radius:inherit;" viewbox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#0d0d0d" height="280" width="400"></rect>
+<rect fill="#161616" height="32" width="400" x="0" y="0"></rect>
+<circle cx="14" cy="16" fill="#ff5f57" r="5"></circle><circle cx="28" cy="16" fill="#febc2e" r="5"></circle><circle cx="42" cy="16" fill="#28c840" r="5"></circle>
+<text fill="#737373" font-family="monospace" font-size="9" x="60" y="21">ISC2 CC Study Hub · 1000 Questions</text>
+<!-- 5 domain progress bars -->
+<text fill="#c8f76b" font-family="monospace" font-size="9" x="20" y="52">// Domain Progress</text>
+<!-- D1 -->
+<text fill="#a3a3a3" font-family="monospace" font-size="7" x="20" y="70">D1 · Security Principles</text>
+<rect fill="#1a1a1a" height="8" rx="3" width="240" x="20" y="74"></rect>
+<rect fill="#c8f76b" height="8" rx="3" width="216" x="20" y="74"></rect>
+<text fill="#c8f76b" font-family="monospace" font-size="7" x="268" y="81">90%</text>
+<!-- D2 -->
+<text fill="#a3a3a3" font-family="monospace" font-size="7" x="20" y="96">D2 · Business Continuity</text>
+<rect fill="#1a1a1a" height="8" rx="3" width="240" x="20" y="100"></rect>
+<rect fill="#c8f76b" height="8" rx="3" width="192" x="20" y="100"></rect>
+<text fill="#c8f76b" font-family="monospace" font-size="7" x="268" y="107">80%</text>
+<!-- D3 -->
+<text fill="#a3a3a3" font-family="monospace" font-size="7" x="20" y="122">D3 · Access Controls</text>
+<rect fill="#1a1a1a" height="8" rx="3" width="240" x="20" y="126"></rect>
+<rect fill="#febc2e" height="8" rx="3" width="204" x="20" y="126"></rect>
+<text fill="#febc2e" font-family="monospace" font-size="7" x="268" y="133">85%</text>
+<!-- D4 -->
+<text fill="#a3a3a3" font-family="monospace" font-size="7" x="20" y="148">D4 · Network Security</text>
+<rect fill="#1a1a1a" height="8" rx="3" width="240" x="20" y="152"></rect>
+<rect fill="#c8f76b" height="8" rx="3" width="168" x="20" y="152"></rect>
+<text fill="#c8f76b" font-family="monospace" font-size="7" x="268" y="159">70%</text>
+<!-- D5 -->
+<text fill="#a3a3a3" font-family="monospace" font-size="7" x="20" y="174">D5 · Security Operations</text>
+<rect fill="#1a1a1a" height="8" rx="3" width="240" x="20" y="178"></rect>
+<rect fill="#28c840" height="8" rx="3" width="228" x="20" y="178"></rect>
+<text fill="#28c840" font-family="monospace" font-size="7" x="268" y="185">95%</text>
+<!-- right panel - exam simulator card -->
+<rect fill="#131313" height="148" rx="6" stroke="rgba(200,247,107,0.2)" stroke-width="1" width="88" x="300" y="42"></rect>
+<text fill="#c8f76b" font-family="monospace" font-size="7" x="314" y="60">EXAM SIM</text>
+<line stroke="rgba(255,255,255,0.07)" x1="300" x2="388" y1="64" y2="64"></line>
+<text fill="#f5f5f4" font-family="monospace" font-size="17" font-weight="700" x="312" y="82">100</text>
+<text fill="#737373" font-family="monospace" font-size="6" x="308" y="93">questions</text>
+<text fill="#c8f76b" font-family="monospace" font-size="14" font-weight="700" x="308" y="112">120</text>
+<text fill="#737373" font-family="monospace" font-size="6" x="308" y="123">minutes</text>
+<text fill="#febc2e" font-family="monospace" font-size="14" font-weight="700" x="312" y="142">700</text>
+<text fill="#737373" font-family="monospace" font-size="6" x="306" y="153">to pass /1000</text>
+<rect fill="rgba(40,200,64,0.15)" height="18" rx="4" stroke="#28c840" stroke-width="0.6" width="72" x="308" y="160"></rect>
+<text fill="#28c840" font-family="monospace" font-size="7" x="317" y="172">START EXAM</text>
+<!-- bottom stats -->
+<rect fill="#131313" height="60" rx="5" stroke="rgba(255,255,255,0.07)" width="270" x="20" y="200"></rect>
+<text fill="#737373" font-family="monospace" font-size="7" x="30" y="218">QUESTIONS ANSWERED</text>
+<text fill="#c8f76b" font-family="monospace" font-size="20" font-weight="700" x="30" y="234">847</text>
+<text fill="#737373" font-family="monospace" font-size="7" x="100" y="218">ACCURACY</text>
+<text fill="#28c840" font-family="monospace" font-size="20" font-weight="700" x="100" y="234">84%</text>
+<text fill="#737373" font-family="monospace" font-size="7" x="170" y="218">STREAK</text>
+<text fill="#febc2e" font-family="monospace" font-size="20" font-weight="700" x="170" y="234">23🔥</text>
+<text fill="#737373" font-family="monospace" font-size="6" x="30" y="252">153 questions remaining · Estimated ready: 2 days</text>
+</svg>

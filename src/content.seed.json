@@ -1,0 +1,553 @@
+{
+  "meta": {
+    "title": "Mohamed Mohamud",
+    "description": "Data Center Technician at a hyperscale AI data center, pursuing CCNA certification. CompTIA Security+ and ISC2 CC certified, with hands-on networking and data center infrastructure experience."
+  },
+  "status": {
+    "en": "Open to Opportunities",
+    "so": "Diyaar u ah Fursado"
+  },
+  "hero": {
+    "eyebrow": {
+      "en": "Data Center Technician & Networking Professional",
+      "so": "Farsamayaqaanka Xarunta Xogta & Xirfadle Shabakadda"
+    },
+    "lede": {
+      "en": "Data Center Technician at a hyperscale AI data center, pursuing **CCNA** certification to grow into networking. Security+ and ISC2 CC certified, with hands-on experience in structured cabling, rack-and-stack infrastructure, and port-level troubleshooting.",
+      "so": "Farsamayaqaan Xarun Xog ah oo ka shaqeeya xarun xog AI ah oo weyn, oo u gudbanaya shahaadada **CCNA**. Leh shahaadaha Security+ iyo ISC2 CC, waayo-aragnimo dhab ah oo ku saabsan cablaynta, rack-and-stack-ka, iyo xalinta dhibaatooyinka port-ka."
+    },
+    "chips": [
+      {
+        "text": "CCNA · In Progress",
+        "accent": true
+      },
+      {
+        "text": "CompTIA Security+",
+        "accent": true
+      },
+      {
+        "text": "ISC2 CC",
+        "accent": true
+      },
+      {
+        "text": "DoD 8570 IAT Level II",
+        "accent": false
+      }
+    ],
+    "cta": {
+      "en": "Get in Touch",
+      "so": "La Xiriir"
+    },
+    "work": {
+      "en": "View Projects",
+      "so": "Mashaariic"
+    },
+    "resume": "MohamedMohamud_Master_Resume.pdf",
+    "photo": "IMG_0068.png"
+  },
+  "stats": [
+    {
+      "kicker": "Projects",
+      "value": "6",
+      "plus": true,
+      "compact": false,
+      "sub": "Live and deployed"
+    },
+    {
+      "kicker": "Certification",
+      "value": "Sec+",
+      "plus": false,
+      "compact": true,
+      "sub": "SY0-701 · April 2026"
+    },
+    {
+      "kicker": "Next Cert",
+      "value": "CCNA",
+      "plus": false,
+      "compact": true,
+      "sub": "In Progress"
+    },
+    {
+      "kicker": "Degrees",
+      "value": "3",
+      "plus": false,
+      "compact": false,
+      "sub": "AS · BS · MS (in progress)"
+    }
+  ],
+  "about": {
+    "title": {
+      "en": "From the helpdesk\nto the data center floor.",
+      "so": "Taageerada ilaa\ndabaqa xarunta xogta."
+    },
+    "sub": {
+      "en": "Three degrees, two careers, one direction: networking infrastructure.",
+      "so": "Saddex shahaado, laba xirfadood, hal jiho: kaabayaasha shabakadda."
+    },
+    "paragraphs": [
+      {
+        "en": "I started in physical security working shifts as an officer and supervisor at Allied Universal and Securitas. That gave me a ground-level understanding of access control, incident documentation, and risk that most IT people never get. From there I moved into desktop support at Franklin University, troubleshooting hardware, software, and network issues for staff and students every day.",
+        "so": "Waxaan ku bilaabay amniga jireed oo ah Sarkaal Amni iyo Agaasime Xiliga ee Allied Universal iyo Securitas. Waayo-aragnimadaas ayaa ii siisay faham dhab ah oo ku saabsan xakamaynta gelitaanka, diiwaangelinta xadgudubka, iyo khatarta."
+      },
+      {
+        "en": "I passed CompTIA Security+ (SY0-701) in April 2026, satisfying DoD 8570 IAT Level II requirements, and followed it with the ISC2 Certified in Cybersecurity (CC) in May 2026. I'm now pursuing CCNA certification to build deeper networking expertise — routing, switching, and the protocols that keep infrastructure running.",
+        "so": "Waxaan gudbi April 2026 Security+ SY0-701, kadibna May 2026 waxaan gudbi ISC2 Certified in Cybersecurity (CC). Hadda waxaan u gudbanayaa shahaadada CCNA si aan u dheeraysto aqoonta shabakadda — routing, switching, iyo protocol-yada kaabayaasha shabakadda."
+      },
+      {
+        "en": "Since July 2026 I've been working as a Data Center Technician at a hyperscale AI data center, installing and maintaining low-voltage and fiber cabling infrastructure, performing rack-and-stack builds, and troubleshooting port-level connectivity for critical systems. I'm building on that hands-on infrastructure experience, and my CCNA studies, to grow into Network Technician, NOC, and Data Center Operations roles.",
+        "so": "Laga bilaabo Luulyo 2026, waxaan ka shaqeynayaa Farsamayaqaan Xarun Xog ah oo ku yaal xarun xog AI ah oo weyn, waxaanan dhejinayaa oo dayactirayaa xariiqyada koronto-cabbirka hooseeya iyo fiber-ka, dhisidda rack-yada, iyo xalinta dhibaatooyinka port-ka. Waxaan ku dul dhisayaa waayo-aragnimadan iyo baritaanka CCNA si aan ugu guuro doorarka Network Technician, NOC, iyo Data Center Operations."
+      }
+    ]
+  },
+  "experience": {
+    "title": {
+      "en": "Where I've worked.",
+      "so": "Meesha aan ka shaqeeyay."
+    },
+    "items": [
+      {
+        "years": "JUL 2026 — NOW",
+        "role": "Data Center Technician",
+        "org": "EOS IT SOLUTIONS",
+        "chips": [
+          "Low-Voltage & Fiber Cabling",
+          "Rack & Stack",
+          "BICSI / ANSI / EIA-TIA"
+        ],
+        "desc": {
+          "en": "Installing, terminating, and maintaining low-voltage and fiber cabling infrastructure at a hyperscale AI data center. Rack-and-stack equipment installation, MOP/CMOP-guided cable management, live network device service swaps, and port map troubleshooting to meet SLA requirements. Studying for CCNA certification alongside this role to build deeper routing and switching expertise.",
+          "so": "Dhejinta, xirista, iyo dayactirka xariiqyada koronto-cabbirka hooseeya iyo fiber-ka ee xarun xog AI ah oo weyn. Dhisidda rack-yada, maaraynta cablayaasha iyada oo la raacayo MOP/CMOP, badalidda qalabka shabakadda ee firfircoon, iyo xalinta dhibaatooyinka port-mapping-ga si loo buuxiyo shuruudaha SLA. Waxaan baranayaa shahaadada CCNA si aan u dheeraysto aqoonta routing-ga iyo switching-ka."
+        }
+      },
+      {
+        "years": "2025 — NOW",
+        "role": "Independent Security Projects",
+        "org": "SELF-DIRECTED",
+        "chips": [
+          "Security+",
+          "Supabase",
+          "Claude API",
+          "GitHub"
+        ],
+        "desc": {
+          "en": "Building hands-on cybersecurity projects: a threat intelligence platform aggregating CISA KEV, AlienVault OTX, and AbuseIPDB feeds; a Security+ exam prep app used to pass SY0-701; and an AI-powered CTF lab. Pursuing MS in Cybersecurity and Information Assurance at WGU.",
+          "so": "Dhisidda mashaariic amni ah: goob ururisa xog hanjabaad ah oo isku dara CISA KEV, AlienVault OTX, iyo AbuseIPDB; app diyaargarayn Security+ ah oo lagu gudbay SY0-701; iyo lab CTF ah oo AI ku shaqeeya. Waxaan baranayaa MS Cybersecurity and Information Assurance ee WGU."
+        }
+      },
+      {
+        "years": "2023 — 2025",
+        "role": "Desktop Technician",
+        "org": "FRANKLIN UNIVERSITY",
+        "chips": [
+          "Active Directory",
+          "Windows / macOS",
+          "Help Desk"
+        ],
+        "desc": {
+          "en": "IT support for university staff and students. Hardware diagnostics, software configuration, network troubleshooting, Active Directory user management, and help desk ticket resolution across Windows and macOS environments.",
+          "so": "Taageero IT ah oo loogu talagalay shaqaalaha iyo ardayda jaamacadda. Baarista hardware, dejinta software, xalinta dhibaatooyinka shabakadda, maaraynta isticmaalaha Active Directory."
+        }
+      },
+      {
+        "years": "2022–2026",
+        "role": "Shift Supervisor / Security Officer",
+        "org": "SECURITAS · ALLIED UNIVERSAL",
+        "chips": [
+          "Access Control",
+          "Incident Response",
+          "Risk Assessment"
+        ],
+        "desc": {
+          "en": "Physical security operations at multiple sites. Access control enforcement, incident response and documentation, patrol coordination, risk assessment, and shift supervision of security personnel.",
+          "so": "Hawlaha amniga jireed ee goobaha kala duwan. Xakamaynta gelitaanka, ka jawaabista xadgudubka iyo diiwaangelintisa, xiriirka riddada, qiimaynta khatarta."
+        }
+      }
+    ]
+  },
+  "skills": {
+    "title": {
+      "en": "What I know.",
+      "so": "Waxa aan garanaayo."
+    },
+    "groups": [
+      {
+        "name": "Networking",
+        "chips": [
+          "CCNA (In Progress)",
+          "Routing & Switching Fundamentals",
+          "TCP/IP",
+          "Port Mapping",
+          "Cabling Infrastructure"
+        ]
+      },
+      {
+        "name": "Data Center Operations",
+        "chips": [
+          "Rack & Stack",
+          "Low-Voltage & Fiber Cabling",
+          "BICSI / ANSI / EIA-TIA Standards",
+          "MOP / CMOP Procedures",
+          "Port Mapping"
+        ]
+      },
+      {
+        "name": "IT Support",
+        "chips": [
+          "Active Directory",
+          "Desktop Support",
+          "Help Desk",
+          "Network Troubleshooting",
+          "Windows / macOS",
+          "Hardware Diagnostics"
+        ]
+      },
+      {
+        "name": "Cybersecurity",
+        "chips": [
+          "Threat Intelligence",
+          "GRC",
+          "SOC Operations",
+          "Incident Response",
+          "Risk Assessment",
+          "NIST CSF",
+          "OWASP Top 10",
+          "Access Control",
+          "Vulnerability Analysis"
+        ]
+      },
+      {
+        "name": "Development",
+        "chips": [
+          "HTML / CSS / JS",
+          "Supabase",
+          "GitHub Pages",
+          "React",
+          "REST APIs",
+          "Edge Functions",
+          "Claude API"
+        ]
+      },
+      {
+        "name": "Data & Analytics",
+        "chips": [
+          "Business Analytics",
+          "Power BI",
+          "SQL",
+          "Excel",
+          "Data Visualization"
+        ]
+      }
+    ]
+  },
+  "certifications": [
+    {
+      "name": "CCNA (Cisco Certified Network Associate)",
+      "meta": "Cisco",
+      "link": null,
+      "earned": false,
+      "badge": "In Progress"
+    },
+    {
+      "name": "CompTIA Security+ SY0-701",
+      "meta": "CompTIA · Passed April 2026",
+      "link": null,
+      "earned": true,
+      "badge": "Certified · DoD 8570 IAT Level II"
+    },
+    {
+      "name": "ISC2 Certified in Cybersecurity (CC)",
+      "meta": "ISC2 · Passed May 2026",
+      "link": {
+        "text": "cc.kulaninstitute.org",
+        "url": "https://cc.kulaninstitute.org/"
+      },
+      "earned": true,
+      "badge": "Certified"
+    },
+    {
+      "name": "CompTIA CySA+ (CS0-003)",
+      "meta": "CompTIA",
+      "link": {
+        "text": "cysa.kulaninstitute.org",
+        "url": "https://cysa.kulaninstitute.org/"
+      },
+      "earned": false,
+      "badge": "In Progress"
+    }
+  ],
+  "education": [
+    {
+      "name": "MS Cybersecurity and Information Assurance",
+      "meta": "Western Governors University (WGU) · In Progress",
+      "current": true
+    },
+    {
+      "name": "BS Business Administration",
+      "meta": "Franklin University · GPA 3.5",
+      "current": false
+    },
+    {
+      "name": "AS Computer Science",
+      "meta": "Columbus State Community College · GPA 3.4",
+      "current": false
+    }
+  ],
+  "work": {
+    "title": {
+      "en": "What I've built.",
+      "so": "Waxa aan dhisay."
+    },
+    "sub": {
+      "en": "Live projects. All deployed. All functional.",
+      "so": "Mashaariicda nool. Dhammaan la dhigay."
+    },
+    "projects": [
+      {
+        "key": "sentineliq",
+        "label": "Threat Intelligence · SOC",
+        "title": "SentinelIQ",
+        "blurb": "AI-powered security operations platform with live threat feed aggregation (CISA KEV, AlienVault OTX, AbuseIPDB), Claude-powered alert triage, MITRE ATT&CK mapping, NIST CSF 2.0 compliance tracking, SOAR playbook engine, and full incident management. Simulates a production Tier-1 SOC analyst workstation.",
+        "chips": [
+          "Supabase Edge Functions",
+          "CISA KEV",
+          "MITRE ATT&CK",
+          "NIST CSF 2.0",
+          "Claude API",
+          "AbuseIPDB"
+        ],
+        "metrics": [
+          {
+            "value": "3",
+            "label": "Live Feeds"
+          },
+          {
+            "value": "CSF",
+            "label": "NIST 2.0"
+          },
+          {
+            "value": "ATT&CK",
+            "label": "MITRE"
+          }
+        ],
+        "links": [
+          {
+            "text": "Live Demo",
+            "url": "https://soc.mmohamud.me",
+            "muted": false
+          },
+          {
+            "text": "GitHub",
+            "url": "https://github.com/mmohamud25/Soc-SentinelIQ",
+            "muted": true
+          }
+        ],
+        "featured": true,
+        "visual": "sentineliq"
+      },
+      {
+        "key": "security-exam-prep",
+        "label": "Education · Cybersecurity",
+        "title": "Security+ Exam Prep",
+        "blurb": "Self-contained exam prep app with 373 questions, adaptive flashcards, Exam Simulator, Cyber Blitz mini-game, and three PBQ simulations. Built and used to pass SY0-701 in April 2026.",
+        "chips": [
+          "HTML / CSS / JS",
+          "LocalStorage",
+          "Zero Dependencies"
+        ],
+        "metrics": [
+          {
+            "value": "373",
+            "label": "Questions"
+          },
+          {
+            "value": "Pass",
+            "label": "Apr 2026"
+          }
+        ],
+        "links": [
+          {
+            "text": "Try It",
+            "url": "https://secplus.kulaninstitute.org/",
+            "muted": false
+          },
+          {
+            "text": "GitHub",
+            "url": "https://github.com/mmohamud25/secplus-study",
+            "muted": true
+          }
+        ],
+        "featured": false,
+        "visual": "security-exam-prep"
+      },
+      {
+        "key": "kulan-cyber-lab",
+        "label": "CTF · Blue Team · Hands-on Lab",
+        "title": "Kulan Cyber Lab",
+        "blurb": "AI-powered cybersecurity training platform with 32 lab topics across four types: CTF Challenges, Guided Attack Simulations, Blue Team Defense Labs, and Security+ domain exercises. Claude API is routed through a Supabase Edge Function proxy so API keys never touch the browser. Difficulty selector, live CTF timer, lab history, and completion tracking built in.",
+        "chips": [
+          "Claude API",
+          "Supabase Edge Functions",
+          "CTF Challenges",
+          "Blue Team Labs",
+          "OWASP Top 10"
+        ],
+        "metrics": [
+          {
+            "value": "32",
+            "label": "Lab Topics"
+          },
+          {
+            "value": "4",
+            "label": "Lab Types"
+          }
+        ],
+        "links": [
+          {
+            "text": "Try the Lab",
+            "url": "https://labs.kulaninstitute.org",
+            "muted": false
+          },
+          {
+            "text": "GitHub",
+            "url": "https://github.com/mmohamud25/Kulan-Cyber-Lab",
+            "muted": true
+          }
+        ],
+        "featured": false,
+        "visual": "kulan-cyber-lab"
+      },
+      {
+        "key": "isc2-cc-study-hub",
+        "label": "Cybersecurity · Certification Hub",
+        "title": "ISC2 CC Study Hub",
+        "blurb": "Full study platform for the ISC2 Certified in Cybersecurity (CC) exam. 1000 practice questions across all 5 domains, with a full exam simulator matching the real format: 100 questions, 120 minutes, 700/1000 to pass. Covers security principles, business continuity, access controls, network security, and security operations.",
+        "chips": [
+          "ISC2 CC",
+          "1000 Questions",
+          "5 Domains",
+          "Exam Simulator",
+          "HTML / CSS / JS"
+        ],
+        "metrics": [
+          {
+            "value": "1000",
+            "label": "Questions"
+          },
+          {
+            "value": "5",
+            "label": "Domains"
+          }
+        ],
+        "links": [
+          {
+            "text": "Try It",
+            "url": "https://cc.kulaninstitute.org/",
+            "muted": false
+          },
+          {
+            "text": "GitHub",
+            "url": "https://github.com/mmohamud25/cc",
+            "muted": true
+          }
+        ],
+        "featured": false,
+        "visual": "isc2-cc-study-hub"
+      },
+      {
+        "key": "cysa-study-hub",
+        "label": "Cybersecurity · Certification Hub",
+        "title": "CySA+ Study Hub",
+        "blurb": "A dedicated study and practice platform built while pursuing CompTIA CySA+ (CS0-003). Covers threat and vulnerability management, security operations, incident response, and compliance. Built to reinforce hands-on analyst skills beyond the Security+ foundation.",
+        "chips": [
+          "CompTIA CySA+",
+          "Threat Analysis",
+          "Vulnerability Mgmt",
+          "Incident Response",
+          "HTML / CSS / JS"
+        ],
+        "metrics": [],
+        "links": [
+          {
+            "text": "Live Site",
+            "url": "https://cysa.kulaninstitute.org/",
+            "muted": false
+          },
+          {
+            "text": "GitHub",
+            "url": "https://github.com/mmohamud25/Cysa-",
+            "muted": true
+          }
+        ],
+        "featured": false,
+        "visual": "cysa-study-hub"
+      }
+    ]
+  },
+  "now": {
+    "title": {
+      "en": "What I'm doing.",
+      "so": "Waxa aan samaynayo."
+    },
+    "updated": "Aug 2026",
+    "items": [
+      {
+        "en": "Working as a Data Center Technician at a hyperscale AI data center via EOS IT Solutions, targeting Network Technician, NOC, and Data Center Operations roles.",
+        "so": "Waxaan ka shaqeynayaa Farsamayaqaan Xarun Xog ah oo ku yaal xarun xog AI ah oo weyn, iyada oo EOS IT Solutions la shaqeeyo, waxaana bartilmaameedsanayaa doorarka Network Technician, NOC, iyo Data Center Operations."
+      },
+      {
+        "en": "Studying for CCNA certification to build routing and switching expertise, alongside an MS in Cybersecurity and Information Assurance at WGU.",
+        "so": "Waxaan u gudbanayaa shahaadada CCNA si aan u dheeraysto routing-ga iyo switching-ka, iyadoo la socota MS Cybersecurity and Information Assurance ee WGU."
+      },
+      {
+        "en": "Building SentinelIQ Phase 2: AI-powered threat scoring and alert automation.",
+        "so": "Dhisaya SentinelIQ Phase 2: qiimaynta hanjabaadaha ee AI iyo automation-ka digniinaha."
+      },
+      {
+        "en": "Growing Kulan Cyber Lab with AI-driven CTF scenarios for Security+ learners.",
+        "so": "Kobcinta Kulan Cyber Lab oo leh xaaladaha CTF ee cusub ee loogu talagalay ardayda Security+."
+      },
+      {
+        "en": "Co-hosting [Intel Cast](https://open.spotify.com/show/intelcast) podcast on cybersecurity and tech education for the Somali diaspora.",
+        "so": "La-marsinaynaya podcast-ka Intel Cast ee ku saabsan amniga kumbiyuutarka iyo waxbarashada teknolojiyada."
+      }
+    ]
+  },
+  "writing": {
+    "title": {
+      "en": "Recent writing.",
+      "so": "Qoraalada dhowaan."
+    }
+  },
+  "contact": {
+    "heading": {
+      "en": "Let's work _together._",
+      "so": "Aynu wada shaqeeyno."
+    },
+    "socials": [
+      {
+        "text": "LinkedIn",
+        "url": "https://linkedin.com/in/mohamed-2-mohamud",
+        "download": false
+      },
+      {
+        "text": "GitHub",
+        "url": "https://github.com/mmohamud25",
+        "download": false
+      },
+      {
+        "text": "Resume PDF",
+        "url": "MohamedMohamud_Master_Resume.pdf",
+        "download": true
+      }
+    ],
+    "submit": {
+      "en": "Send Message",
+      "so": "Dir Fariinta"
+    }
+  },
+  "footer": {
+    "left": "Mohamed Mohamud · mmohamud.me",
+    "middle": "© 2026 Mohamed Mohamud · [Privacy](https://blog.mmohamud.me/privacy/)",
+    "right": "Security+ · DoD 8570 IAT II"
+  }
+}

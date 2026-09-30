@@ -1,0 +1,89 @@
+<svg style="width:100%;height:100%;border-radius:inherit;" viewbox="0 0 400 280" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#0d0d0d" height="280" width="400"></rect>
+<!-- top bar -->
+<rect fill="#161616" height="32" width="400" x="0" y="0"></rect>
+<circle cx="14" cy="16" fill="#ff5f57" r="5"></circle><circle cx="28" cy="16" fill="#febc2e" r="5"></circle><circle cx="42" cy="16" fill="#28c840" r="5"></circle>
+<text fill="#737373" font-family="monospace" font-size="9" x="60" y="21">SentinelIQ · SOC Dashboard</text>
+<rect fill="rgba(200,247,107,0.15)" height="14" rx="3" stroke="#c8f76b" stroke-width="0.8" width="38" x="350" y="9"></rect>
+<text fill="#c8f76b" font-family="monospace" font-size="7" x="358" y="19">LIVE</text>
+<!-- left sidebar -->
+<rect fill="#111111" height="248" width="60" x="0" y="32"></rect>
+<rect fill="rgba(200,247,107,0.12)" height="22" rx="4" stroke="#c8f76b" stroke-width="0.6" width="44" x="8" y="44"></rect>
+<text fill="#c8f76b" font-family="monospace" font-size="7" x="16" y="58">FEED</text>
+<rect fill="#1a1a1a" height="22" rx="4" width="44" x="8" y="72"></rect>
+<text fill="#737373" font-family="monospace" font-size="7" x="14" y="86">TRIAGE</text>
+<rect fill="#1a1a1a" height="22" rx="4" width="44" x="8" y="100"></rect>
+<text fill="#737373" font-family="monospace" font-size="7" x="14" y="114">MITRE</text>
+<rect fill="#1a1a1a" height="22" rx="4" width="44" x="8" y="128"></rect>
+<text fill="#737373" font-family="monospace" font-size="7" x="14" y="142">NIST</text>
+<rect fill="#1a1a1a" height="22" rx="4" width="44" x="8" y="156"></rect>
+<text fill="#737373" font-family="monospace" font-size="7" x="12" y="170">SOAR</text>
+<!-- main area -->
+<!-- stat cards -->
+<rect fill="#161616" height="42" rx="4" stroke="rgba(255,255,255,0.07)" width="80" x="70" y="40"></rect>
+<text fill="#737373" font-family="monospace" font-size="7" x="78" y="56">ALERTS TODAY</text>
+<text fill="#c8f76b" font-family="monospace" font-size="16" font-weight="700" x="78" y="73">142</text>
+<rect fill="#161616" height="42" rx="4" stroke="rgba(255,255,255,0.07)" width="80" x="158" y="40"></rect>
+<text fill="#737373" font-family="monospace" font-size="7" x="166" y="56">CRITICAL</text>
+<text fill="#ff5f57" font-family="monospace" font-size="16" font-weight="700" x="166" y="73">7</text>
+<rect fill="#161616" height="42" rx="4" stroke="rgba(255,255,255,0.07)" width="80" x="246" y="40"></rect>
+<text fill="#737373" font-family="monospace" font-size="7" x="254" y="56">MITIGATED</text>
+<text fill="#28c840" font-family="monospace" font-size="16" font-weight="700" x="254" y="73">135</text>
+<rect fill="#161616" height="42" rx="4" stroke="rgba(255,255,255,0.07)" width="56" x="334" y="40"></rect>
+<text fill="#737373" font-family="monospace" font-size="7" x="340" y="56">FEEDS</text>
+<text fill="#c8f76b" font-family="monospace" font-size="16" font-weight="700" x="340" y="73">3</text>
+<!-- threat feed table -->
+<rect fill="#131313" height="110" rx="4" stroke="rgba(255,255,255,0.07)" width="320" x="70" y="90"></rect>
+<text fill="#737373" font-family="monospace" font-size="7" x="78" y="104">// LIVE THREAT FEED</text>
+<line stroke="rgba(255,255,255,0.07)" x1="70" x2="390" y1="108" y2="108"></line>
+<!-- rows -->
+<rect fill="rgba(255,95,87,0.08)" height="14" rx="2" width="316" x="72" y="112"></rect>
+<text fill="#ff5f57" font-family="monospace" font-size="7" x="78" y="122">CRIT</text>
+<text fill="#a3a3a3" font-family="monospace" font-size="7" x="102" y="122">185.220.101.42</text>
+<text fill="#737373" font-family="monospace" font-size="7" x="210" y="122">CISA KEV · CVE-2024-3094</text>
+<text fill="#ff5f57" font-family="monospace" font-size="7" x="356" y="122">NOW</text>
+<rect fill="rgba(254,188,46,0.06)" height="14" rx="2" width="316" x="72" y="130"></rect>
+<text fill="#febc2e" font-family="monospace" font-size="7" x="78" y="140">HIGH</text>
+<text fill="#a3a3a3" font-family="monospace" font-size="7" x="102" y="140">91.108.4.130</text>
+<text fill="#737373" font-family="monospace" font-size="7" x="210" y="140">AbuseIPDB · Score 97</text>
+<text fill="#febc2e" font-family="monospace" font-size="7" x="349" y="140">2m ago</text>
+<rect fill="rgba(200,247,107,0.04)" height="14" rx="2" width="316" x="72" y="148"></rect>
+<text fill="#c8f76b" font-family="monospace" font-size="7" x="78" y="158"> MED</text>
+<text fill="#a3a3a3" font-family="monospace" font-size="7" x="102" y="158">45.33.32.156</text>
+<text fill="#737373" font-family="monospace" font-size="7" x="210" y="158">OTX · Malware C2</text>
+<text fill="#c8f76b" font-family="monospace" font-size="7" x="349" y="158">5m ago</text>
+<rect fill="rgba(255,255,255,0.02)" height="14" rx="2" width="316" x="72" y="166"></rect>
+<text fill="#737373" font-family="monospace" font-size="7" x="78" y="176"> LOW</text>
+<text fill="#737373" font-family="monospace" font-size="7" x="102" y="176">172.217.16.46</text>
+<text fill="#737373" font-family="monospace" font-size="7" x="210" y="176">Recon scan detected</text>
+<text fill="#737373" font-family="monospace" font-size="7" x="342" y="176">12m ago</text>
+<!-- MITRE heatmap mini -->
+<rect fill="#131313" height="62" rx="4" stroke="rgba(255,255,255,0.07)" width="150" x="70" y="208"></rect>
+<text fill="#737373" font-family="monospace" font-size="7" x="78" y="222">// MITRE ATT&amp;CK</text>
+<rect fill="rgba(200,247,107,0.7)" height="10" rx="1" width="16" x="78" y="228"></rect>
+<rect fill="rgba(200,247,107,0.4)" height="10" rx="1" width="16" x="97" y="228"></rect>
+<rect fill="rgba(200,247,107,0.2)" height="10" rx="1" width="16" x="116" y="228"></rect>
+<rect fill="rgba(200,247,107,0.6)" height="10" rx="1" width="16" x="135" y="228"></rect>
+<rect fill="rgba(255,95,87,0.6)" height="10" rx="1" width="16" x="154" y="228"></rect>
+<rect fill="rgba(200,247,107,0.1)" height="10" rx="1" width="16" x="78" y="242"></rect>
+<rect fill="rgba(200,247,107,0.8)" height="10" rx="1" width="16" x="97" y="242"></rect>
+<rect fill="rgba(255,95,87,0.4)" height="10" rx="1" width="16" x="116" y="242"></rect>
+<rect fill="rgba(200,247,107,0.3)" height="10" rx="1" width="16" x="135" y="242"></rect>
+<rect fill="rgba(200,247,107,0.5)" height="10" rx="1" width="16" x="154" y="242"></rect>
+<text fill="#737373" font-family="monospace" font-size="6" x="78" y="263">TA0001 TA0002 TA0003 TA0004 TA0005</text>
+<!-- NIST chart -->
+<rect fill="#131313" height="62" rx="4" stroke="rgba(255,255,255,0.07)" width="162" x="228" y="208"></rect>
+<text fill="#737373" font-family="monospace" font-size="7" x="236" y="222">// NIST CSF 2.0</text>
+<text fill="#737373" font-family="monospace" font-size="6" x="236" y="235">IDENTIFY</text>
+<rect fill="#1a1a1a" height="6" rx="2" width="60" x="270" y="228"></rect>
+<rect fill="#c8f76b" height="6" rx="2" width="48" x="270" y="228"></rect>
+<text fill="#c8f76b" font-family="monospace" font-size="6" x="334" y="235">80%</text>
+<text fill="#737373" font-family="monospace" font-size="6" x="236" y="247">PROTECT</text>
+<rect fill="#1a1a1a" height="6" rx="2" width="60" x="270" y="240"></rect>
+<rect fill="#febc2e" height="6" rx="2" width="42" x="270" y="240"></rect>
+<text fill="#febc2e" font-family="monospace" font-size="6" x="334" y="247">70%</text>
+<text fill="#737373" font-family="monospace" font-size="6" x="236" y="259">DETECT</text>
+<rect fill="#1a1a1a" height="6" rx="2" width="60" x="270" y="252"></rect>
+<rect fill="#c8f76b" height="6" rx="2" width="54" x="270" y="252"></rect>
+<text fill="#c8f76b" font-family="monospace" font-size="6" x="334" y="259">90%</text>
+</svg>
