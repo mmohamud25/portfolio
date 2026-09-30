@@ -190,7 +190,7 @@ ${p.metrics.map((m) => `          <div><div class="project__metric-value">${esc(
 ${(p.links || []).map((l) => `          <a href="${attr(safeUrl(l.url))}" target="_blank" class="project__cta"${l.muted ? ' style="color:var(--ink-dim);"' : ""}>${esc(l.text)} &#8594;</a>`).join("\n")}
         </div>
       </div>
-      <div class="project__visual">
+      <div class="project__visual" aria-hidden="true">
         ${visuals[p.visual] || DEFAULT_VISUAL}
       </div>
     </div>`).join("\n\n")}
@@ -288,10 +288,15 @@ if (/\{\{[a-z.]+\}\}/i.test(html)) throw new Error("A template marker was left u
 
 await rm(OUT, { recursive: true, force: true });
 await mkdir(OUT, { recursive: true });
-const SKIP = new Set(["_site", "src", "scripts", "node_modules", "index.html", "package.json", "package-lock.json", "README.md"]);
+const SKIP = new Set(["_site", "src", "scripts", "node_modules", "index.html", "package.json", "package-lock.json", "README.md", "README-builder.md", "sitemap-generator.html"]);
 for (const f of await readdir(".")) {
   if (f.startsWith(".") || SKIP.has(f) || f.endsWith(".sql") || f.endsWith(".mjs")) continue;
   await cp(f, join(OUT, f), { recursive: true });
 }
 await writeFile(join(OUT, "index.html"), html);
+await writeFile(join(OUT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://mmohamud.me/</loc><lastmod>${new Date().toISOString().slice(0, 10)}</lastmod></url>
+</urlset>
+`);
 console.log("Built _site/index.html");
