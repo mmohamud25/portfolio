@@ -441,13 +441,7 @@ a { color: inherit; text-decoration: none; }
 <nav class="nav">
   <div class="nav__logo">MM</div>
   <div class="nav__links" id="navLinks">
-    <a href="#about">About</a>
-    <a href="#experience">Experience</a>
-    <a href="#skills">Skills</a>
-    <a href="#work">Work</a>
-    <a href="#now">/now</a>
-    <a href="#writing">Writing</a>
-    <a href="#contact">Contact</a>
+{{navlinks}}
   </div>
   <div class="nav__right">
     <button class="btn-lang" id="langBtn" onclick="toggleLang()" title="Somali / English toggle" aria-label="Toggle Somali language">SO</button>
@@ -463,62 +457,12 @@ a { color: inherit; text-decoration: none; }
 
 <!-- Left section menu (wide screens): the current section expands as you scroll -->
 <nav class="rail" id="rail" aria-label="Sections">
-  <a href="#about" data-sec="about"><span class="rail__num">01</span><span class="rail__line" aria-hidden="true"></span><span class="rail__label">About</span></a>
-  <a href="#experience" data-sec="experience"><span class="rail__num">02</span><span class="rail__line" aria-hidden="true"></span><span class="rail__label">Experience</span></a>
-  <a href="#skills" data-sec="skills"><span class="rail__num">03</span><span class="rail__line" aria-hidden="true"></span><span class="rail__label">Skills</span></a>
-  <a href="#work" data-sec="work"><span class="rail__num">04</span><span class="rail__line" aria-hidden="true"></span><span class="rail__label">Work</span></a>
-  <a href="#now" data-sec="now"><span class="rail__num">05</span><span class="rail__line" aria-hidden="true"></span><span class="rail__label">/now</span></a>
-  <a href="#writing" data-sec="writing"><span class="rail__num">06</span><span class="rail__line" aria-hidden="true"></span><span class="rail__label">Writing</span></a>
-  <a href="#contact" data-sec="contact"><span class="rail__num">07</span><span class="rail__line" aria-hidden="true"></span><span class="rail__label">Contact</span></a>
+{{rail}}
 </nav>
 
 {{hero}}
 
-{{stats}}
-
-{{about}}
-
-{{experience}}
-
-{{skills}}
-
-{{work}}
-
-{{now}}
-
-<!-- 06 WRITING -->
-<section class="section section--alt" id="writing">
-  <div class="section__head">
-    <div><span class="mono-label mono-label--accent">06 / WRITING</span></div>
-    <div>
-      <h2 class="section__title" id="writingTitle">{{writing.title}}</h2>
-    </div>
-  </div>
-  <div class="section__body fu">
-    <div id="blogList"><div class="blog-empty">Loading posts...</div></div>
-  </div>
-</section>
-
-<!-- 08 CONTACT -->
-<div class="contact" id="contact">
-  <div class="grid-bg" style="position:absolute;inset:0;pointer-events:none;z-index:0;"></div>
-  <div style="position:relative;z-index:1;">
-    <span class="mono-label mono-label--accent">07 / CONTACT</span>
-    {{contact}}
-    <div class="cform-wrap">
-      <form id="cForm" action="https://formspree.io/f/xyknjrdo" method="POST">
-        <label class="flbl" for="cName">Name</label>
-        <input class="finp" type="text" id="cName" name="name" required placeholder="Your name"/>
-        <label class="flbl" for="cEmail">Email</label>
-        <input class="finp" type="email" id="cEmail" name="email" required placeholder="your@email.com"/>
-        <label class="flbl" for="cMsg">Message</label>
-        <textarea class="fta" id="cMsg" name="message" required placeholder="Tell me about a role or opportunity"></textarea>
-        <div class="form-ok" id="formOk">MESSAGE SENT. WILL REPLY WITHIN 48 HOURS.</div>
-        <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center;" id="submitBtn">{{contact.submit}}</button>
-      </form>
-    </div>
-  </div>
-</div>
+{{sections}}
 
 {{footer}}
 
@@ -547,7 +491,7 @@ function toggleLang() {
 }
 
 /* Scroll effects: progress bar, back-to-top, and which section you're in (top menu, left menu, phone menu) */
-var SECTION_IDS = ['about', 'experience', 'skills', 'work', 'now', 'writing', 'contact'];
+var SECTION_IDS = {{sectionIds}};
 function currentSection() {
   var line = window.innerHeight * 0.35, cur = null;
   SECTION_IDS.forEach(function(id) {
@@ -637,7 +581,7 @@ async function loadBlog() {
 loadBlog();
 
 /* Contact form */
-document.getElementById('cForm').addEventListener('submit', async function (e) {
+(document.getElementById('cForm') || { addEventListener: function () {} }).addEventListener('submit', async function (e) {
   e.preventDefault();
   var form = this, btn = document.getElementById('submitBtn'), orig = btn.textContent;
   var f = form.elements;

@@ -39,7 +39,7 @@ function tr(id, field, linkStyle) {
 }
 
 // ---------- sections ----------
-function hero(h) {
+function hero(h, show = { contact: true, work: true }) {
   return `<!-- HERO -->
 <div class="hero">
   <div class="grid-bg" style="position:absolute;inset:0;pointer-events:none;z-index:0;"></div>
@@ -53,9 +53,7 @@ function hero(h) {
 ${h.chips.map((c) => `          ${chip(c.text, c.accent ? "chip chip--accent" : "chip")}`).join("\n")}
         </div>
         <div class="hero__actions">
-          <a href="#contact" class="btn btn--primary" id="heroCta">${tr("heroCta", h.cta)}</a>
-          <a href="#work" class="btn btn--ghost" id="heroWork">${tr("heroWork", h.work)}</a>
-          <a href="${attr(safeUrl(h.resume))}" download class="btn btn--ghost btn--sm">Resume PDF &#8595;</a>
+${show.contact ? `          <a href="#contact" class="btn btn--primary" id="heroCta">${tr("heroCta", h.cta)}</a>\n` : ""}${show.work ? `          <a href="#work" class="btn btn--ghost" id="heroWork">${tr("heroWork", h.work)}</a>\n` : ""}          <a href="${attr(safeUrl(h.resume))}" download class="btn btn--ghost btn--sm">Resume PDF &#8595;</a>
         </div>
       </div>
       <div class="portrait" style="max-width:280px;">
@@ -89,20 +87,20 @@ const head = (num, id, title, extraId, sub) => `  <div class="section__head">
     </div>
   </div>`;
 
-function about(a) {
-  return `<!-- 01 ABOUT -->
-<section class="section" id="about">
-${head("01 / ABOUT", "aboutTitle", tr("aboutTitle", a.title), "aboutSub", tr("aboutSub", a.sub))}
+function about(a, num = "", alt = "") {
+  return `<!-- ${num} ABOUT -->
+<section class="section${alt}" id="about">
+${head(`${num} / ABOUT`, "aboutTitle", tr("aboutTitle", a.title), "aboutSub", tr("aboutSub", a.sub))}
   <div class="section__body fu">
 ${a.paragraphs.map((p, i) => `    <p style="font-size:17px;color:var(--ink-mid);line-height:1.75;max-width:660px;${i < a.paragraphs.length - 1 ? "margin-bottom:24px;" : ""}" id="aboutP${i + 1}">${tr(`aboutP${i + 1}`, p)}</p>`).join("\n")}
   </div>
 </section>`;
 }
 
-function experience(e) {
-  return `<!-- 02 EXPERIENCE -->
-<section class="section section--alt" id="experience">
-${head("02 / EXPERIENCE", "expTitle", tr("expTitle", e.title))}
+function experience(e, num = "", alt = "") {
+  return `<!-- ${num} EXPERIENCE -->
+<section class="section${alt}" id="experience">
+${head(`${num} / EXPERIENCE`, "expTitle", tr("expTitle", e.title))}
   <div class="section__body fu">
 ${e.items.map((x, i) => `    <div class="timeline__row">
       <div class="timeline__year">${esc(x.years)}</div>
@@ -121,7 +119,7 @@ ${(x.chips || []).map((c) => `          ${chip(c)}`).join("\n")}
 </section>`;
 }
 
-function skills(s, certs, edu) {
+function skills(s, certs, edu, num = "", alt = "") {
   const certRows = certs.map((c) => `      <div class="cert-row${c.earned ? " live" : ""}">
         <div class="cert-dot ${c.earned ? "on" : "off"}"></div>
         <div>
@@ -133,9 +131,9 @@ function skills(s, certs, edu) {
   const eduRows = edu.map((d) => `      <div class="cert-row${d.current ? " live" : ""}">
         <div><div class="cert-name">${esc(d.name)}</div><div class="cert-meta">${esc(d.meta)}</div></div>
       </div>`).join("\n");
-  return `<!-- 03 SKILLS -->
-<section class="section" id="skills">
-${head("03 / SKILLS", "skillsTitle", tr("skillsTitle", s.title))}
+  return `<!-- ${num} SKILLS -->
+<section class="section${alt}" id="skills">
+${head(`${num} / SKILLS`, "skillsTitle", tr("skillsTitle", s.title))}
   <div class="section__body fu">
 ${s.groups.map((g) => `    <div class="skill-group">
       <h4>${esc(g.name)}</h4>
@@ -169,10 +167,10 @@ const DEFAULT_VISUAL = `<svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000
   <rect x="206" y="188" width="174" height="60" rx="6" fill="#131313" stroke="rgba(255,255,255,0.07)"/>
 </svg>`;
 
-function work(w, visuals) {
-  return `<!-- 04 WORK -->
-<section class="section section--alt" id="work">
-${head("04 / WORK", "workTitle", tr("workTitle", w.title), "workSub", tr("workSub", w.sub))}
+function work(w, visuals, num = "", alt = "") {
+  return `<!-- ${num} WORK -->
+<section class="section${alt}" id="work">
+${head(`${num} / WORK`, "workTitle", tr("workTitle", w.title), "workSub", tr("workSub", w.sub))}
   <div class="section__body fu">
 
 ${w.projects.map((p) => `    <div class="project${p.featured ? " project--featured glow" : ""}" style="margin-bottom:20px;">
@@ -199,10 +197,10 @@ ${(p.links || []).map((l) => `          <a href="${attr(safeUrl(l.url))}" target
 </section>`;
 }
 
-function now(n) {
-  return `<!-- 05 /NOW -->
-<section class="section" id="now">
-${head("05 / NOW", "nowTitle", tr("nowTitle", n.title))}
+function now(n, num = "", alt = "") {
+  return `<!-- ${num} /NOW -->
+<section class="section${alt}" id="now">
+${head(`${num} / NOW`, "nowTitle", tr("nowTitle", n.title))}
   <div class="section__body fu">
     <div class="now-card">
       <div class="now-card__updated">Updated ${esc(n.updated)}</div>
@@ -219,6 +217,59 @@ function contact(c) {
     <div class="contact-socials">
 ${c.socials.map((s) => `      <a href="${attr(safeUrl(s.url))}"${s.download ? " download" : ' target="_blank"'}>${esc(s.text)}</a>`).join("\n")}
     </div>`;
+}
+
+function writing(w, num = "", alt = "") {
+  return `<!-- ${num} WRITING -->
+<section class="section${alt}" id="writing">
+  <div class="section__head">
+    <div><span class="mono-label mono-label--accent">${num} / WRITING</span></div>
+    <div>
+      <h2 class="section__title" id="writingTitle">${tr("writingTitle", w.title)}</h2>
+    </div>
+  </div>
+  <div class="section__body fu">
+    <div id="blogList"><div class="blog-empty">Loading posts...</div></div>
+  </div>
+</section>`;
+}
+
+function contactSection(c, num = "") {
+  return `<!-- ${num} CONTACT -->
+<div class="contact" id="contact">
+  <div class="grid-bg" style="position:absolute;inset:0;pointer-events:none;z-index:0;"></div>
+  <div style="position:relative;z-index:1;">
+    <span class="mono-label mono-label--accent">${num} / CONTACT</span>
+    ${contact(c)}
+    <div class="cform-wrap">
+      <form id="cForm" action="https://formspree.io/f/xyknjrdo" method="POST">
+        <label class="flbl" for="cName">Name</label>
+        <input class="finp" type="text" id="cName" name="name" required placeholder="Your name"/>
+        <label class="flbl" for="cEmail">Email</label>
+        <input class="finp" type="email" id="cEmail" name="email" required placeholder="your@email.com"/>
+        <label class="flbl" for="cMsg">Message</label>
+        <textarea class="fta" id="cMsg" name="message" required placeholder="Tell me about a role or opportunity"></textarea>
+        <div class="form-ok" id="formOk">MESSAGE SENT. WILL REPLY WITHIN 48 HOURS.</div>
+        <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center;" id="submitBtn">${tr("submitBtn", c.submit)}</button>
+      </form>
+    </div>
+  </div>
+</div>`;
+}
+
+// ---------- layout: section order/visibility and the menu (edited in Admin → Portfolio → Layout & menu) ----------
+const SECTION_IDS = ["stats", "about", "experience", "skills", "work", "now", "writing", "contact"];
+const NUMBERED = new Set(["about", "experience", "skills", "work", "now", "writing", "contact"]);
+const DEFAULT_MENU = [["About", "about"], ["Experience", "experience"], ["Skills", "skills"], ["Work", "work"], ["/now", "now"], ["Writing", "writing"], ["Contact", "contact"]];
+function normalizeLayout(l = {}) {
+  const seen = new Set();
+  const sections = (Array.isArray(l.sections) ? l.sections : [])
+    .filter((x) => SECTION_IDS.includes(x?.id) && !seen.has(x.id) && seen.add(x.id))
+    .map((x) => ({ id: x.id, visible: x.visible !== false }));
+  for (const id of SECTION_IDS) if (!seen.has(id)) sections.push({ id, visible: true });   // new sections appear at the end
+  const menu = Array.isArray(l.menu) ? l.menu.filter((m) => m && (m.label || "").trim())
+    : DEFAULT_MENU.map(([label, target]) => ({ label, target, url: "", newTab: false, visible: true }));
+  return { sections, menu };
 }
 
 function footer(f) {
@@ -260,20 +311,52 @@ const visuals = {};
 if (existsSync("src/visuals")) for (const f of await readdir("src/visuals")) if (f.endsWith(".svg")) visuals[f.replace(/\.svg$/, "")] = await readFile(join("src/visuals", f), "utf8");
 
 let html = await readFile("src/template.html", "utf8");
+// Sections in the order you chose; numbers ("01 / ABOUT") and shading follow the order.
+const LAYOUT = normalizeLayout(C.layout);
+const shown = new Set(LAYOUT.sections.filter((x) => x.visible).map((x) => x.id));
+const R = {
+  stats: () => stats(C.stats),
+  about: (n, a) => about(C.about, n, a),
+  experience: (n, a) => experience(C.experience, n, a),
+  skills: (n, a) => skills(C.skills, C.certifications, C.education, n, a),
+  work: (n, a) => work(C.work, visuals, n, a),
+  now: (n, a) => now(C.now, n, a),
+  writing: (n, a) => writing(C.writing, n, a),
+  contact: (n) => contactSection(C.contact, n),
+};
+const numOf = {};
+let count = 0, shade = 0;
+const blocks = [];
+for (const sec of LAYOUT.sections) {
+  if (!sec.visible) continue;
+  if (!NUMBERED.has(sec.id)) { blocks.push(R[sec.id]()); continue; }
+  const num = String(++count).padStart(2, "0");
+  numOf[sec.id] = num;
+  const alt = sec.id === "contact" ? "" : (shade++ % 2 ? " section--alt" : "");
+  blocks.push(R[sec.id](num, alt));
+}
+// The menu: links to sections that are on the page, plus any outside links you added.
+const menu = LAYOUT.menu.filter((m) => m.visible !== false).map((m) => {
+  if (m.target === "custom") {
+    const url = safeUrl(m.url || "");
+    return url === "#" ? null : { label: m.label, href: url, external: true, newTab: !!m.newTab, num: "↗" };
+  }
+  return shown.has(m.target) && m.target !== "stats" ? { label: m.label, href: `#${m.target}`, sec: m.target, num: numOf[m.target] || "" } : null;
+}).filter(Boolean);
+const blank = (m) => (m.newTab ? ' target="_blank" rel="noopener"' : "");
+const navlinks = menu.map((m) => `    <a href="${attr(m.href)}"${blank(m)}>${esc(m.label)}</a>`).join("\n");
+const rail = menu.map((m) => `  <a href="${attr(m.href)}"${m.sec ? ` data-sec="${m.sec}"` : ""}${blank(m)}><span class="rail__num">${esc(m.num)}</span><span class="rail__line" aria-hidden="true"></span><span class="rail__label">${esc(m.label)}</span></a>`).join("\n");
+const sectionIds = LAYOUT.sections.filter((x) => x.visible && NUMBERED.has(x.id)).map((x) => x.id);
+
 const parts = {
   "{{meta.title}}": esc(C.meta.title),
   "{{meta.description}}": attr(C.meta.description),
   "{{status}}": tr("statusText", C.status),
-  "{{hero}}": hero(C.hero),
-  "{{stats}}": stats(C.stats),
-  "{{about}}": about(C.about),
-  "{{experience}}": experience(C.experience),
-  "{{skills}}": skills(C.skills, C.certifications, C.education),
-  "{{work}}": work(C.work, visuals),
-  "{{now}}": now(C.now),
-  "{{writing.title}}": tr("writingTitle", C.writing.title),
-  "{{contact}}": contact(C.contact),
-  "{{contact.submit}}": tr("submitBtn", C.contact.submit),
+  "{{hero}}": hero(C.hero, { contact: shown.has("contact"), work: shown.has("work") }),
+  "{{sections}}": blocks.join("\n\n"),
+  "{{navlinks}}": navlinks,
+  "{{rail}}": rail,
+  "{{sectionIds}}": JSON.stringify(sectionIds).replace(/"/g, "'").replace(/,/g, ", "),
   "{{footer}}": footer(C.footer),
 };
 for (const [k, v] of Object.entries(parts)) {
