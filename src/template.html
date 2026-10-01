@@ -601,7 +601,7 @@ loadBlog();
     var m = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
     mailed = m.ok;
   } catch (err) {}
-  if (saved || mailed) { form.reset(); document.getElementById('formOk').style.display = 'block'; btn.textContent = 'Sent'; }
+  if (saved || mailed) { form.reset(); document.getElementById('formOk').style.display = 'block'; btn.textContent = 'Sent'; if (window.mmTrack) window.mmTrack('contact_submit'); }
   else { btn.textContent = 'Try Again'; }
   btn.style.opacity = '1'; btn.disabled = false;
   setTimeout(function () { btn.textContent = orig; }, 4000);
