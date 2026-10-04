@@ -377,6 +377,46 @@ for (const f of await readdir(".")) {
   await cp(f, join(OUT, f), { recursive: true });
 }
 await writeFile(join(OUT, "index.html"), html);
+// Short links: mmohamud.me/go/<name>/ → anywhere (edited in Admin → Portfolio → Short links).
+// Each is a tiny page that counts the click (same privacy rules as page views) and forwards instantly.
+const TRACK_URL = "https://lurrqcyaybpgidzjfdvh.supabase.co/functions/v1/track";
+let shortCount = 0;
+for (const l of Array.isArray(C.shortlinks) ? C.shortlinks : []) {
+  const slug = String(l.slug || "").trim().toLowerCase();
+  const url = String(l.url || "").trim();
+  if (!/^[a-z0-9][a-z0-9-]{0,39}$/.test(slug) || !/^https:\/\/[^\s"'<>]+$/.test(url)) continue;
+  const js = (v) => JSON.stringify(v).replace(/</g, "\\u003c");
+  const page = `<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Redirecting…</title>
+<link rel="canonical" href="${attr(url)}">
+<meta http-equiv="refresh" content="1;url=${attr(url)}">
+<script>
+(function () {
+  var to = ${js(url)};
+  try {
+    var off = localStorage.getItem("mm-ignore") === "1" || navigator.doNotTrack === "1" || navigator.globalPrivacyControl;
+    if (!off && navigator.sendBeacon) {
+      var src = "";
+      try { var h = document.referrer && new URL(document.referrer).hostname.replace(/^www\\./, ""); if (h && !/(^|\\.)mmohamud\\.me$/.test(h)) src = h; } catch (e) {}
+      navigator.sendBeacon(${js(TRACK_URL)}, new Blob([JSON.stringify({ path: location.pathname, event: "short_link", detail: ${js(slug)}, source: src })], { type: "text/plain" }));
+    }
+  } catch (e) {}
+  location.replace(to);
+})();
+</script>
+<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#0a0a0a;color:#a3a3a3;font:15px system-ui,sans-serif}a{color:#c8f76b}</style>
+</head><body><p>Taking you to <a href="${attr(url)}">${esc(url)}</a>…</p></body></html>
+`;
+  await mkdir(join(OUT, "go", slug), { recursive: true });
+  await writeFile(join(OUT, "go", slug, "index.html"), page);
+  shortCount++;
+}
+if (shortCount) console.log(`Built ${shortCount} short link${shortCount === 1 ? "" : "s"}`);
+
 await writeFile(join(OUT, "sitemap.xml"), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://mmohamud.me/</loc><lastmod>${new Date().toISOString().slice(0, 10)}</lastmod></url>
