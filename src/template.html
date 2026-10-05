@@ -18,6 +18,26 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg"/>
   <link rel="shortcut icon" href="favicon.svg"/>
   <link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin/>
+  <meta name="color-scheme" content="dark light"/>
+  <meta name="theme-color" content="#0a0a0a" id="theme-color"/>
+  <script>
+  /* Theme: light 7 AM–7 PM (visitor's clock), dark otherwise, unless they chose with the ☀/☾ button. Runs before the page is drawn. */
+  (function () {
+    var K = "mm-theme", root = document.documentElement;
+    function mode() { try { var v = localStorage.getItem(K); return v === "light" || v === "dark" ? v : "time"; } catch (e) { return "time"; } }
+    function auto() { var h = new Date().getHours(); return h >= 7 && h < 19 ? "light" : "dark"; }
+    function theme() { var m = mode(); return m === "time" ? auto() : m; }
+    function apply() {
+      var t = theme(); root.dataset.theme = t; root.dataset.themeMode = mode();
+      var mc = document.getElementById("theme-color"); if (mc) mc.content = t === "light" ? "#fafaf8" : "#0a0a0a";
+    }
+    apply();
+    window.mmTheme = { mode: mode, auto: auto, theme: theme, apply: apply,
+      set: function (v) { try { v === "time" ? localStorage.removeItem(K) : localStorage.setItem(K, v); } catch (e) {} apply(); } };
+    setInterval(function () { if (mode() === "time") apply(); }, 60000);
+    window.addEventListener("storage", function (e) { if (e.key === K) apply(); });
+  })();
+  </script>
   <link rel="stylesheet" href="fonts/fonts.css"/>
   <style>
 /* ============================================================
@@ -35,11 +55,20 @@
   --line-strong: rgba(255,255,255,0.14);
   --ink:         #f5f5f4;
   --ink-mid:     #a3a3a3;
-  --ink-dim:     #737373;
+  --ink-dim:     #8a8a8a;
   --accent:      #c8f76b;
   --accent-dim:  rgba(200,247,107,0.12);
   --accent-glow: rgba(200,247,107,0.18);
   --green:       #22c55e;
+  --nav-bg:      rgba(10,10,10,0.85);
+  --hover:       rgba(255,255,255,0.04);
+  --hover-soft:  rgba(255,255,255,0.02);
+  --photo-from:  #1a1a1a;
+  --photo-to:    #0e0e0e;
+  --accent-line: rgba(200,247,107,0.35);
+  --accent-mid:  rgba(200,247,107,0.22);
+  --accent-soft: rgba(200,247,107,0.16);
+  --menu-shadow: rgba(0,0,0,0.6);
   --font-sans:   "Geist", "Inter", system-ui, sans-serif;
   --font-mono:   "Geist Mono", "JetBrains Mono", ui-monospace, monospace;
   --sp-1:  4px; --sp-2:  8px;  --sp-3:  12px; --sp-4:  16px;
@@ -86,7 +115,7 @@ a { color: inherit; text-decoration: none; }
 .nav { position: sticky; top: 0; z-index: 50;
   display: flex; align-items: center; justify-content: space-between;
   padding: var(--sp-4) var(--sp-14);
-  background: rgba(10,10,10,0.85); backdrop-filter: blur(14px);
+  background: var(--nav-bg); backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--line); }
 .nav__logo { width: 32px; height: 32px; border-radius: 8px;
   background: var(--accent); color: var(--bg);
@@ -110,7 +139,7 @@ a { color: inherit; text-decoration: none; }
 .btn--primary { background: var(--accent); color: var(--bg); border-color: var(--accent); }
 .btn--primary:hover { box-shadow: 0 8px 24px -8px var(--accent-glow); }
 .btn--ghost { background: transparent; color: var(--ink); border-color: var(--line-strong); }
-.btn--ghost:hover { background: rgba(255,255,255,0.04); }
+.btn--ghost:hover { background: var(--hover); }
 .btn--sm { padding: 8px 14px; font-size: 13px; border-radius: 8px; }
 
 /* 7. HERO */
@@ -122,7 +151,7 @@ a { color: inherit; text-decoration: none; }
 .hero__lede strong { color: var(--ink); font-weight: 500; }
 
 .portrait { position: relative; aspect-ratio: 4/5; border-radius: var(--radius-xl);
-  overflow: hidden; background: linear-gradient(135deg, #1a1a1a 0%, #0e0e0e 100%);
+  overflow: hidden; background: linear-gradient(135deg, var(--photo-from) 0%, var(--photo-to) 100%);
   border: 1px solid var(--line-strong); }
 .portrait::before { content: ''; position: absolute; inset: 0;
   background: radial-gradient(circle at 30% 25%, var(--accent-dim), transparent 50%); }
@@ -189,7 +218,7 @@ a { color: inherit; text-decoration: none; }
   gap: 32px; padding: 24px 0; border-top: 1px solid var(--line);
   align-items: center; color: var(--ink); transition: background 0.15s, padding-left 0.2s;
   cursor: pointer; }
-.post-row:hover { background: rgba(255,255,255,0.02); padding-left: 12px; }
+.post-row:hover { background: var(--hover-soft); padding-left: 12px; }
 .post-row__date { font-family: var(--font-mono); font-size: 12px; color: var(--ink-dim); }
 .post-row__title { font-size: 20px; letter-spacing: -0.01em; }
 .post-row__meta { font-family: var(--font-mono); font-size: 11px; color: var(--ink-dim); text-align: right; }
@@ -279,7 +308,7 @@ a { color: inherit; text-decoration: none; }
   border-radius: var(--radius-lg); margin-bottom: 10px;
   transition: background 0.15s, border-color 0.15s; }
 .cert-row:hover { background: var(--card-hover); border-color: var(--line-strong); }
-.cert-row.live { border-color: rgba(200,247,107,0.35); }
+.cert-row.live { border-color: var(--accent-line); }
 .cert-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 .cert-dot.on { background: var(--accent); }
 .cert-dot.off { background: var(--line-strong); }
@@ -295,7 +324,7 @@ a { color: inherit; text-decoration: none; }
 .mock-bar { display: flex; gap: 5px; margin-bottom: 6px; }
 .mock-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--line-strong); }
 .mock-ln { height: 9px; border-radius: 3px; background: var(--line); }
-.mock-ln.a { background: rgba(200,247,107,0.22); }
+.mock-ln.a { background: var(--accent-mid); }
 .mock-ln.w30 { width: 30%; }
 .mock-ln.w45 { width: 45%; }
 .mock-ln.w60 { width: 60%; }
@@ -304,7 +333,7 @@ a { color: inherit; text-decoration: none; }
 .mock-table { display: flex; flex-direction: column; gap: 5px; margin-top: 4px; }
 .mock-tr { display: flex; gap: 7px; }
 .mock-td { height: 8px; border-radius: 3px; background: var(--line); flex: 1; }
-.mock-td.hl { background: rgba(200,247,107,0.16); }
+.mock-td.hl { background: var(--accent-soft); }
 .mock-spacer { flex: 1; }
 
 /* Timeline chips */
@@ -414,7 +443,7 @@ a { color: inherit; text-decoration: none; }
   .nav.menu-open .nav__burger span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
   .nav.menu-open .nav__links { display: flex; position: absolute; top: 100%; left: 0; right: 0;
     flex-direction: column; gap: 0; padding: 8px var(--sp-6) 16px; background: var(--bg);
-    border-bottom: 1px solid var(--line-strong); box-shadow: 0 24px 48px rgba(0,0,0,0.6); }
+    border-bottom: 1px solid var(--line-strong); box-shadow: 0 24px 48px var(--menu-shadow); }
   /* the top bar's blur shows the page through the open menu, so make the bar solid while it's open */
   .nav.menu-open { background: var(--bg); backdrop-filter: none; -webkit-backdrop-filter: none; }
   .nav.menu-open .nav__links a { padding: 14px 0; font-size: 15px; border-bottom: 1px solid var(--line); }
@@ -429,7 +458,46 @@ a { color: inherit; text-decoration: none; }
 @media (prefers-reduced-motion: reduce) {
   .rail__line, .rail__label, .nav__burger span { transition: none; }
 }
-  </style>
+  
+/* ---------- Light theme (☀/☾ button, or automatic by time of day) ---------- */
+[data-theme="light"] {
+  color-scheme: light;
+  --bg:          #fafaf8;
+  --bg-2:        #f3f3f0;
+  --bg-3:        #ecece8;
+  --card:        #ffffff;
+  --card-hover:  #f6f6f3;
+  --line:        rgba(10,10,10,0.09);
+  --line-strong: rgba(10,10,10,0.18);
+  --ink:         #0a0a0a;
+  --ink-mid:     #44403c;
+  --ink-dim:     #625d57;
+  --accent:      #3f6212;
+  --accent-dim:  rgba(63,98,18,0.10);
+  --accent-glow: rgba(63,98,18,0.16);
+  --green:       #15803d;
+  --nav-bg:      rgba(250,250,248,0.88);
+  --hover:       rgba(10,10,10,0.04);
+  --hover-soft:  rgba(10,10,10,0.025);
+  --photo-from:  #ededea;
+  --photo-to:    #e2e2dd;
+  --accent-line: rgba(63,98,18,0.40);
+  --accent-mid:  rgba(63,98,18,0.18);
+  --accent-soft: rgba(63,98,18,0.12);
+  --menu-shadow: rgba(10,10,10,0.12);
+}
+html.theme-animating *, html.theme-animating *::before, html.theme-animating *::after { transition: background-color .35s ease, border-color .35s ease, color .35s ease !important; }
+@media (prefers-reduced-motion: reduce) { html.theme-animating * { transition: none !important; } }
+/* ☀/☾ button, beside "back to top" */
+.theme-fab { position: fixed; right: 28px; bottom: 28px; z-index: 60; width: 44px; height: 44px; border-radius: 50%;
+  border: 1px solid var(--line-strong); background: var(--card); color: var(--ink); display: grid; place-items: center; cursor: pointer; }
+.theme-fab:hover { border-color: var(--accent); color: var(--accent); }
+.theme-fab:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.theme-fab svg { width: 18px; height: 18px; }
+.theme-fab .auto-dot { position: absolute; top: 5px; right: 5px; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); border: 2px solid var(--card); }
+#btt { right: 84px !important; }
+@media print { .theme-fab { display: none; } }
+</style>
 <script>window.BLOG_CFG = { url: "https://lurrqcyaybpgidzjfdvh.supabase.co", key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx1cnJxY3lheWJwZ2lkempmZHZoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA2ODQwNjgsImV4cCI6MjEwNjI2MDA2OH0.lOou18b7XYOLXcgJ-RABsDegpOCiO9pu_-bdWJdUX2M" };</script>
   <script defer src="https://admin.mmohamud.me/t.js"></script>
 </head>
@@ -612,6 +680,34 @@ async function loadLabs() {
     el.appendChild(all);
   } catch (err) { hide(); }
 }
+// ☀/☾: switch light/dark and remember it; switching back to what the time of day would show returns to automatic.
+(function () {
+  var T = window.mmTheme; if (!T) return;
+  var root = document.documentElement;
+  var SUN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>';
+  var MOON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
+  var btn = document.createElement('button');
+  btn.type = 'button'; btn.className = 'theme-fab';
+  function render() {
+    var dark = T.theme() === 'dark', auto = T.mode() === 'time';
+    btn.innerHTML = (dark ? SUN : MOON) + (auto ? '<span class="auto-dot" aria-hidden="true"></span>' : '');
+    var label = dark ? 'Switch to light theme' : 'Switch to dark theme';
+    btn.setAttribute('aria-label', label + (auto ? ' (now automatic by time of day)' : ''));
+    btn.title = label + (auto ? ' · now automatic by time of day' : '');
+  }
+  btn.addEventListener('click', function () {
+    var next = T.theme() === 'dark' ? 'light' : 'dark';
+    root.classList.add('theme-animating');
+    T.set(next === T.auto() ? 'time' : next);
+    setTimeout(function () { root.classList.remove('theme-animating'); }, 400);
+    render();
+  });
+  window.addEventListener('storage', render);
+  setInterval(render, 60000);
+  render();
+  document.body.appendChild(btn);
+})();
+
 // Sections that hide themselves (no labs or posts yet) shouldn't leave gaps like 04 → 06: renumber what's visible.
 function renumberSections() {
   var n = 0;
