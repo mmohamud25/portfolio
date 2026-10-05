@@ -219,6 +219,22 @@ ${c.socials.map((s) => `      <a href="${attr(safeUrl(s.url))}"${s.download ? " 
     </div>`;
 }
 
+// Recent labs: filled in the browser from lab.mmohamud.me/labs.json, and hidden (with its menu links) until a lab is published.
+function labsSection(l, num = "", alt = "") {
+  return `<!-- ${num} LABS -->
+<section class="section${alt}" id="labs">
+  <div class="section__head">
+    <div><span class="mono-label mono-label--accent">${num} / LABS</span></div>
+    <div>
+      <h2 class="section__title" id="labsTitle">${tr("labsTitle", (l && l.title) || { en: "Recent labs.", so: "Shaybaarrada dhowaan." })}</h2>
+    </div>
+  </div>
+  <div class="section__body fu">
+    <div id="labList"><div class="blog-empty">Loading labs...</div></div>
+  </div>
+</section>`;
+}
+
 function writing(w, num = "", alt = "") {
   return `<!-- ${num} WRITING -->
 <section class="section${alt}" id="writing">
@@ -258,15 +274,21 @@ function contactSection(c, num = "") {
 }
 
 // ---------- layout: section order/visibility and the menu (edited in Admin → Portfolio → Layout & menu) ----------
-const SECTION_IDS = ["stats", "about", "experience", "skills", "work", "now", "writing", "contact"];
-const NUMBERED = new Set(["about", "experience", "skills", "work", "now", "writing", "contact"]);
-const DEFAULT_MENU = [["About", "about"], ["Experience", "experience"], ["Skills", "skills"], ["Work", "work"], ["/now", "now"], ["Writing", "writing"], ["Contact", "contact"]];
+const SECTION_IDS = ["stats", "about", "experience", "skills", "work", "labs", "now", "writing", "contact"];
+const NUMBERED = new Set(["about", "experience", "skills", "work", "labs", "now", "writing", "contact"]);
+const DEFAULT_MENU = [["About", "about"], ["Experience", "experience"], ["Skills", "skills"], ["Work", "work"], ["Labs", "labs"], ["/now", "now"], ["Writing", "writing"], ["Contact", "contact"]];
 function normalizeLayout(l = {}) {
   const seen = new Set();
   const sections = (Array.isArray(l.sections) ? l.sections : [])
     .filter((x) => SECTION_IDS.includes(x?.id) && !seen.has(x.id) && seen.add(x.id))
     .map((x) => ({ id: x.id, visible: x.visible !== false }));
-  for (const id of SECTION_IDS) if (!seen.has(id)) sections.push({ id, visible: true });   // new sections appear at the end
+  // A section that's new to a saved layout goes right after the section it follows by default.
+  SECTION_IDS.forEach((id, i) => {
+    if (seen.has(id)) return;
+    const after = sections.findIndex((x) => x.id === SECTION_IDS[i - 1]);
+    sections.splice(after === -1 ? sections.length : after + 1, 0, { id, visible: true });
+    seen.add(id);
+  });
   const menu = Array.isArray(l.menu) ? l.menu.filter((m) => m && (m.label || "").trim())
     : DEFAULT_MENU.map(([label, target]) => ({ label, target, url: "", newTab: false, visible: true }));
   return { sections, menu };
@@ -321,6 +343,7 @@ const R = {
   skills: (n, a) => skills(C.skills, C.certifications, C.education, n, a),
   work: (n, a) => work(C.work, visuals, n, a),
   now: (n, a) => now(C.now, n, a),
+  labs: (n, a) => labsSection(C.labs, n, a),
   writing: (n, a) => writing(C.writing, n, a),
   contact: (n) => contactSection(C.contact, n),
 };

@@ -578,7 +578,53 @@ async function loadBlog() {
     el.appendChild(all);
   } catch (err) { hide(); }
 }
-loadBlog();
+
+// Recent labs from lab.mmohamud.me (newest first). Hidden, with its menu links, until a lab is published.
+async function loadLabs() {
+  var el = document.getElementById('labList');
+  var section = document.getElementById('labs');
+  if (!el) return;
+  function hide() { if (section) section.style.display = 'none'; document.querySelectorAll('a[href="#labs"]').forEach(function(a) { a.style.display = 'none'; }); }
+  try {
+    var res = await fetch('https://lab.mmohamud.me/labs.json', { cache: 'no-store' });
+    if (!res.ok) return hide();
+    var labs = (await res.json()).slice(0, 5);
+    if (!labs.length) return hide();
+    el.textContent = '';
+    labs.forEach(function (l) {
+      var row = document.createElement('a');
+      row.className = 'post-row';
+      row.href = l.url;
+      var code = document.createElement('div'); code.className = 'post-row__date'; code.textContent = l.code;
+      var cat = document.createElement('div'); var chip = document.createElement('span');
+      chip.className = 'chip'; chip.textContent = l.difficulty || 'Lab'; cat.appendChild(chip);
+      var title = document.createElement('div'); title.className = 'post-row__title'; title.textContent = l.title;
+      var meta = document.createElement('div'); meta.className = 'post-row__meta'; meta.textContent = l.duration || '';
+      row.append(code, cat, title, meta);
+      el.appendChild(row);
+    });
+    var all = document.createElement('a');
+    all.href = 'https://lab.mmohamud.me';
+    all.className = 'project__cta';
+    all.style.display = 'inline-flex';
+    all.style.marginTop = '24px';
+    all.textContent = 'All labs \u2192';
+    el.appendChild(all);
+  } catch (err) { hide(); }
+}
+// Sections that hide themselves (no labs or posts yet) shouldn't leave gaps like 04 → 06: renumber what's visible.
+function renumberSections() {
+  var n = 0;
+  (window.SECTION_IDS || SECTION_IDS).forEach(function (id) {
+    var sec = document.getElementById(id);
+    if (!sec || sec.style.display === 'none') return;
+    var num = String(++n).padStart(2, '0');
+    var label = sec.querySelector('.mono-label');
+    if (label) label.textContent = label.textContent.replace(/^\d{2}/, num);
+    document.querySelectorAll('.rail a[data-sec="' + id + '"] .rail__num').forEach(function (r) { r.textContent = num; });
+  });
+}
+Promise.allSettled([loadBlog(), loadLabs()]).then(renumberSections);
 
 /* Contact form */
 (document.getElementById('cForm') || { addEventListener: function () {} }).addEventListener('submit', async function (e) {
