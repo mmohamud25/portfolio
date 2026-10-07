@@ -497,6 +497,18 @@ html.theme-animating *, html.theme-animating *::before, html.theme-animating *::
 .theme-fab .auto-dot { position: absolute; top: 5px; right: 5px; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); border: 2px solid var(--card); }
 #btt { right: 84px !important; }
 @media print { .theme-fab { display: none; } }
+
+/* Comfortable touch targets and readable small text on phones and tablets */
+@media (max-width: 900px) {
+  .btn-lang { min-height: 44px; min-width: 44px; padding: 0 14px; font-size: 12px; }
+  .project__cta { display: inline-flex; align-items: center; min-height: 44px; padding: 0 6px 0 0; }
+  .cert-meta a, .contact a, .footer a { display: inline-block; padding: 13px 0; }
+  h4 { font-size: 12px; }
+  .btn { min-height: 44px; }
+  .chip { font-size: 12px; padding: 6px 12px; }
+  .mono-label, .stat__kicker { font-size: 12px; }
+  .timeline__year, .timeline__org, .cert-meta { font-size: 13px; }
+}
 </style>
 <script>window.BLOG_CFG = { url: "https://lurrqcyaybpgidzjfdvh.supabase.co", key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx1cnJxY3lheWJwZ2lkempmZHZoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTA2ODQwNjgsImV4cCI6MjEwNjI2MDA2OH0.lOou18b7XYOLXcgJ-RABsDegpOCiO9pu_-bdWJdUX2M" };</script>
   <script defer src="https://admin.mmohamud.me/t.js"></script>
