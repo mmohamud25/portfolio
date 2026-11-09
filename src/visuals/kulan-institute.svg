@@ -1,0 +1,56 @@
+<svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;border-radius:inherit;">
+<rect width="400" height="280" fill="#050505"/>
+<rect width="400" height="32" fill="#111111"/>
+<circle cx="14" cy="16" r="5" fill="#ff5f57"/><circle cx="28" cy="16" r="5" fill="#febc2e"/><circle cx="42" cy="16" r="5" fill="#28c840"/>
+<text x="60" y="21" fill="#737373" font-family="monospace" font-size="9">learn.kulaninstitute.org · Dashboard</text>
+<rect x="336" y="9" width="52" height="14" rx="3" fill="rgba(200,247,107,0.12)" stroke="#c8f76b" stroke-width="0.8"/>
+<text x="343" y="19" fill="#c8f76b" font-family="monospace" font-size="7">EN · SO</text>
+<!-- sidebar -->
+<rect x="0" y="32" width="96" height="248" fill="#0a0a0a"/>
+<circle cx="16" cy="52" r="3" fill="#c8f76b"/>
+<text x="24" y="55" fill="#e5e5e5" font-family="monospace" font-size="8">Kulan Institute</text>
+<rect x="8" y="68" width="80" height="16" rx="3" fill="rgba(200,247,107,0.10)"/>
+<text x="16" y="79" fill="#c8f76b" font-family="monospace" font-size="7.5">Dashboard</text>
+<text x="16" y="99" fill="#737373" font-family="monospace" font-size="7.5">Courses</text>
+<text x="16" y="117" fill="#737373" font-family="monospace" font-size="7.5">Study hubs</text>
+<text x="16" y="135" fill="#737373" font-family="monospace" font-size="7.5">Calendar</text>
+<text x="16" y="153" fill="#737373" font-family="monospace" font-size="7.5">Grades</text>
+<text x="16" y="171" fill="#737373" font-family="monospace" font-size="7.5">Certificates</text>
+<!-- course card -->
+<rect x="106" y="42" width="284" height="74" rx="5" fill="#101010" stroke="rgba(200,247,107,0.12)"/>
+<text x="118" y="60" fill="#e5e5e5" font-family="monospace" font-size="9">Cybersecurity 101</text>
+<text x="118" y="73" fill="#737373" font-family="monospace" font-size="7">Module 1 of 8 · Live class Mon 7:30 pm ET</text>
+<rect x="118" y="84" width="260" height="6" rx="3" fill="#1c1c1c"/>
+<rect x="118" y="84" width="33" height="6" rx="3" fill="#c8f76b"/>
+<text x="118" y="104" fill="#a3a3a3" font-family="monospace" font-size="7">Next: Lesson 1.3 · Quiz: CIA triad</text>
+<rect x="328" y="96" width="50" height="13" rx="3" fill="#c8f76b"/>
+<text x="337" y="105" fill="#050505" font-family="monospace" font-size="7">Resume</text>
+<!-- hubs -->
+<text x="106" y="134" fill="#737373" font-family="monospace" font-size="7.5">STUDY HUBS</text>
+<g font-family="monospace">
+<rect x="106" y="142" width="66" height="54" rx="4" fill="#101010" stroke="#1f1f1f"/>
+<text x="114" y="158" fill="#e5e5e5" font-size="8">Security+</text>
+<text x="114" y="176" fill="#c8f76b" font-size="12">1,359</text>
+<text x="114" y="188" fill="#737373" font-size="6.5">questions</text>
+<rect x="178" y="142" width="66" height="54" rx="4" fill="#101010" stroke="#1f1f1f"/>
+<text x="186" y="158" fill="#e5e5e5" font-size="8">CySA+</text>
+<text x="186" y="176" fill="#c8f76b" font-size="12">1,149</text>
+<text x="186" y="188" fill="#737373" font-size="6.5">questions</text>
+<rect x="250" y="142" width="66" height="54" rx="4" fill="#101010" stroke="#1f1f1f"/>
+<text x="258" y="158" fill="#e5e5e5" font-size="8">PenTest+</text>
+<text x="258" y="176" fill="#c8f76b" font-size="12">1,024</text>
+<text x="258" y="188" fill="#737373" font-size="6.5">questions</text>
+<rect x="322" y="142" width="68" height="54" rx="4" fill="#101010" stroke="#1f1f1f"/>
+<text x="330" y="158" fill="#e5e5e5" font-size="8">ISC2 CC</text>
+<text x="330" y="176" fill="#c8f76b" font-size="12">999</text>
+<text x="330" y="188" fill="#737373" font-size="6.5">questions</text>
+</g>
+<!-- quiz row -->
+<rect x="106" y="206" width="284" height="62" rx="5" fill="#0d0d0d" stroke="#1f1f1f"/>
+<text x="118" y="222" fill="#737373" font-family="monospace" font-size="7">PBQ · Firewall rules · 04:12 left</text>
+<rect x="118" y="230" width="124" height="14" rx="3" fill="#161616" stroke="#28c840" stroke-width="0.8"/>
+<text x="124" y="240" fill="#28c840" font-family="monospace" font-size="7">ALLOW 443/tcp  ✓</text>
+<rect x="250" y="230" width="128" height="14" rx="3" fill="#161616" stroke="#ff5f57" stroke-width="0.8"/>
+<text x="256" y="240" fill="#ff5f57" font-family="monospace" font-size="7">ALLOW 23/tcp  ✕</text>
+<text x="118" y="260" fill="#a3a3a3" font-family="monospace" font-size="7">Why: Telnet sends credentials in clear text. Use SSH.</text>
+</svg>

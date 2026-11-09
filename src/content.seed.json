@@ -345,6 +345,90 @@
         "visual": "sentineliq"
       },
       {
+        "key": "kulan-os",
+        "label": "Operating System · Linux",
+        "title": "Kulan OS",
+        "blurb": "A desktop operating system built on Debian 13 and GNOME, designed to be private, secure and simple to use. It ships its own Settings app with updates you can undo, an assistant that runs entirely on the computer, full-disk encryption, a firewall, tracker blocking and a compliance mode checked against CIS and NIST. Kulan Fleet lets an organization manage its computers and the people who use them, including remote help.",
+        "chips": [
+          "Debian 13",
+          "GNOME",
+          "Python",
+          "TypeScript",
+          "Supabase",
+          "CIS / NIST"
+        ],
+        "metrics": [
+          {
+            "value": "2.13",
+            "label": "Current Release"
+          },
+          {
+            "value": "10",
+            "label": "Own Packages"
+          },
+          {
+            "value": "CIS",
+            "label": "Compliance Mode"
+          }
+        ],
+        "links": [
+          {
+            "text": "Download",
+            "url": "https://os.kulangroup.com",
+            "muted": false
+          },
+          {
+            "text": "GitHub",
+            "url": "https://github.com/mmohamud25/kulan-os",
+            "muted": true
+          }
+        ],
+        "featured": false,
+        "visual": "kulan-os"
+      },
+      {
+        "key": "kulan-institute",
+        "label": "Learning Platform · LMS",
+        "title": "Kulan Institute",
+        "blurb": "Free cybersecurity learning platform, rebuilt as one TypeScript monorepo. Learners get courses, timed quizzes, assignments, grades, live classes and verifiable certificates, in English or Somali. Instructors get a course builder, gradebook and roster. The Security+, CySA+, PenTest+ and ISC2 CC study hubs now live inside it, on a Supabase backend whose access rules are covered by 650+ automated tests.",
+        "chips": [
+          "Next.js",
+          "TypeScript",
+          "Supabase",
+          "Row-Level Security",
+          "Turborepo",
+          "English / Somali"
+        ],
+        "metrics": [
+          {
+            "value": "4,500+",
+            "label": "Practice Questions"
+          },
+          {
+            "value": "4",
+            "label": "Study Hubs"
+          },
+          {
+            "value": "650+",
+            "label": "Access Tests"
+          }
+        ],
+        "links": [
+          {
+            "text": "Visit Platform",
+            "url": "https://learn.kulaninstitute.org",
+            "muted": false
+          },
+          {
+            "text": "Website",
+            "url": "https://kulaninstitute.org",
+            "muted": true
+          }
+        ],
+        "featured": false,
+        "visual": "kulan-institute"
+      },
+      {
         "key": "security-exam-prep",
         "label": "Education · Cybersecurity",
         "title": "Security+ Exam Prep",
